@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>可视化机器学习</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+    <meta name="author" content="spark贵"/>
+
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap-treeview.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/jsplumb.css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+    *{margin:0;padding:0;}
+
+    .title_header{width:100%;height:60px;text-align:center;line-height:60px;color:#fff;background:#000;}
+    ul li{list-style:none;}
+    .config_box{background:rgba(0,0,0,0.3);color:#333;width:220px;position:absolute;}
+    .config_box .delete{color:red;position:absolute;right:-4px;top:-4px;font-size:24px;display:block;width:40px;height:40px;border-radius:20px;}
+    .config_box ul li{width:220px;height:80px;border-bottom:1px solid #fff;}
+    .config_box ul li .config_title{display:block;width:100%;height:20px;}
+    .config_box ul li input{border:none;padding-left:8px;width:200px;margin:10px auto;height:30px;}
+    #wc_submit_btn{width:50px;height:40px;text-align:center;line-height:40px;background:red;color:#000;}
+    </style>
+  </head>
+  <body>
+    <div class="title_header">Spark可视化机器学习</div>
+
+    <div class="flow-fluid">
+      <div class="row">
+        <div class="col-md-2">
+          <div class="panel panel-default" style="height:100%;">
+            <div class="panel-body">
+              <div id="control-panel">
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6" style="height:500px;width: 83%">
+          <div class="panel panel-default" style="height:100%;">
+            <div class="panel-body">
+              <div id="flow-panel" class='col-md-12' style="position:absolute;height:100%;">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+    <script type='text/javascript'></script>
+    <script type="text/javascript" src="/static/libs/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/static/libs/jquery-ui-1.9.2.min.js"></script>
+    <script type="text/javascript" src="/static/libs/d3.min.js"></script>
+    <script type="text/javascript" src="/static/libs/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/libs/bootstrap-treeview.min.js"></script>
+    <script type="text/javascript" src="/static/libs/json2.js"></script>
+    <script type="text/javascript" src="/static/libs/jquery.jsPlumb-1.7.2.js"></script>
+    <script type="text/javascript" src="/static/libs/biltong-0.2.js"></script>
+    <script type="text/javascript" src="/static/libs/jsBezier-0.6.js"></script>
+    
+    <script type="text/javascript" src="/static/libs/main.js"></script>
+  </body>
+</html>
