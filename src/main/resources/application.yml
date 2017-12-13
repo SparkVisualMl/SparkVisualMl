@@ -1,8 +1,13 @@
 spring:
   thymeleaf:
+  # 前端渲染模板配置
+
     encoding: UTF-8
     mode: HTML5
     prefix:  classpath:/templates/
     suffix:  .html
     check-template: false
     cache: false
+  # 数据库连接池
+
+
