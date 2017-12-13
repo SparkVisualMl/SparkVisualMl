@@ -31,6 +31,10 @@
         <spark.mlib.version>spark-mllib_2.11</spark.mlib.version>
         <springboot.swagger.version>2.2.2</springboot.swagger.version>
         <scala.version>2.11.8</scala.version>
+        <!--属性修改默认版本-->
+        <mybatis.version>3.3.0</mybatis.version>
+        <!--mybatis-spring使用版本1.2.3，可以通过：修改默认版本-->
+        <mybatis-spring.version>1.2.3</mybatis-spring.version>
     </properties>
 
     <dependencies>
@@ -181,6 +185,11 @@
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
             <version>1.2.2</version>
+        </dependency>
+        <!--集成持久层框架,mybatis,考虑用jpa替换-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
 
