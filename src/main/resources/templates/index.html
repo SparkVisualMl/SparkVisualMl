@@ -23,7 +23,14 @@
 
     .title_header{width:100%;height:60px;text-align:center;line-height:60px;color:#fff;background:#000;}
     ul li{list-style:none;}
-    .config_box{background:rgba(0,0,0,0.3);color:#333;width:220px;position:absolute;}
+
+    .nav{width:100%;height:40px;text-decoration:none;background:#000;color:#fff;}
+    .nav ul{width:100%;height:40px;}
+    .nav ul li{width:20%;float:left;text-align:center;}
+    .nav ul li .outbox{width:100%;height:40px;color:#fff;text-align:center;margin:0 auto;border-right:1px solid #333;line-height:40px;font-size:22px;}
+    .nav ul li:last-child .outbox{border:none;}
+    .nav ul li .outbox a{color:#dfdfdf;}
+    .config_box{background:rgba(0,0,0,0.3);color:#333;with:220px;position:absolute;}
     .config_box .delete{color:red;position:absolute;right:-4px;top:-4px;font-size:24px;display:block;width:40px;height:40px;border-radius:20px;}
     .config_box ul li{width:220px;height:80px;border-bottom:1px solid #fff;}
     .config_box ul li .config_title{display:block;width:100%;height:20px;}
@@ -33,7 +40,22 @@
   </head>
   <body>
     <div class="title_header">Spark可视化机器学习</div>
+    <div class="nav">
+        <ul>
+          <li><div class="outbox"><a href="http://127.0.0.1:4040" target="view_window">SparkJobMonitor</a></div></li>
+          <li><div class="outbox"><a href="http://127.0.0.1:4040" target="view_window">SparkJobResult</a></div></li>
+          <li><div class="outbox"><a href="http://127.0.0.1:4040" target="view_window">SparkJobBI</a></div></li>
+          <li><div class="outbox"><a href="http://127.0.0.1:4040" target="view_window">SparkJobSystemInfo</a></div></li>
+          <li><div class="outbox"><a href="http://127.0.0.1:4040" target="view_window">SparkJobSetting</a></div></li>
+        </ul>
 
+    </div>
+
+    <form method="POST" enctype="multipart/form-data" id="fileUploadForm">
+      <input type="text" name="extraField"/>
+      <input type="file" name="files"/>
+      <input type="submit" value="提交" id="btnSubmit"/>
+    </form>
     <div class="flow-fluid">
       <div class="row">
         <div class="col-md-2">
@@ -59,7 +81,6 @@
 
 
 
-    <script type='text/javascript'></script>
     <script type="text/javascript" src="/static/libs/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="/static/libs/jquery-ui-1.9.2.min.js"></script>
     <script type="text/javascript" src="/static/libs/d3.min.js"></script>
@@ -69,7 +90,61 @@
     <script type="text/javascript" src="/static/libs/jquery.jsPlumb-1.7.2.js"></script>
     <script type="text/javascript" src="/static/libs/biltong-0.2.js"></script>
     <script type="text/javascript" src="/static/libs/jsBezier-0.6.js"></script>
-    
     <script type="text/javascript" src="/static/libs/main.js"></script>
+    <script type='text/javascript'>
+
+ $(document).ready(function () {
+
+      $("#btnSubmit").click(function (event) {
+
+        //stop submit the form, we will post it manually.
+        event.preventDefault();
+
+        fire_ajax_submit();
+
+      });
+
+});
+
+function fire_ajax_submit() {
+
+    // Get form
+    var form = $('#fileUploadForm')[0];
+
+    var data = new FormData(form);
+
+    data.append("CustomField", "This is some extra data, testing");
+
+    $("#btnSubmit").prop("disabled", true);
+
+    $.ajax({
+        type: "POST",
+        enctype: 'multipart/form-data',
+        url: "/utils/uploadjar",
+        data: data,
+        //http://api.jquery.com/jQuery.ajax/
+        //http://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
+        processData: false, //prevent jQuery from automatically transforming the data into a query string
+        contentType: false,
+        cache: false,
+        timeout: 600000,
+        success: function (data) {
+
+            console.log("SUCCESS : ", data);
+            $("#btnSubmit").prop("disabled", false);
+
+        },
+        error: function (e) {
+
+            console.log("ERROR : ", e);
+            $("#btnSubmit").prop("disabled", false);
+
+        }
+    });
+
+}
+
+    </script>
+
   </body>
 </html>

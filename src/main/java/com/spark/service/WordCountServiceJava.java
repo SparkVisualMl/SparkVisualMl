@@ -7,6 +7,9 @@ import org.apache.spark.api.java.function.FlatMapFunction;
 import org.apache.spark.api.java.function.Function;
 import org.apache.spark.api.java.function.Function2;
 import org.apache.spark.api.java.function.PairFunction;
+import org.apache.spark.sql.SparkSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import scala.Tuple2;
@@ -17,26 +20,25 @@ import java.util.regex.Pattern;
 
 @Component
 public class WordCountServiceJava implements Serializable {
-    private static final Pattern SPACE = Pattern.compile(" ");
+    private static final Pattern SPACE = Pattern.compile(",");
 
     @Autowired
     private transient JavaSparkContext sc;
-
-    public Map<String, Integer> run() {
+    @Autowired
+    private transient SparkSession spark;
+    private Logger logger = LoggerFactory.getLogger(WordCountServiceJava.class);
+    public Map<String, Integer> run(String fileAddress) {
         Map<String, Integer> result = new HashMap<>();
-        List list = new ArrayList<String>();
-        list.add("a d d f f a f");
-        JavaRDD<String> lines = sc.parallelize(list).cache();
-
+        JavaRDD<String> lines = spark.read().textFile(fileAddress).toJavaRDD();
+        logger.warn("spark info----------"+spark.sparkContext().getConf().get("spark.driver.allowMultipleContexts"));
         lines.map(new Function<String, String>() {
             @Override
             public String call(String s) throws Exception {
-                System.out.println(s);
+
                 return s;
             }
         });
 
-        System.out.println(lines.count());
 
         JavaRDD<String> words = lines.flatMap(new FlatMapFunction<String, String>() {
             @Override
@@ -66,13 +68,7 @@ public class WordCountServiceJava implements Serializable {
         List<Tuple2<String, Integer>> output = counts.collect();
         for (Tuple2<String, Integer> tuple : output) {
             result.put(tuple._1(),tuple._2());
-
         }
-        Iterator iterator = output.iterator();
-        while (iterator.hasNext()){
-            System.out.println(iterator.next());
-        }
-
         return result;
 
     }

@@ -14,7 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableSwagger2
 @Configuration
-//spring自己本身的注解
+/**spring自己本身的注解
 //为了集成swagger2 通过
 //@Import({Swagger2DocumentationConfiguration.class})
 //引入了一个Swagger2DocumentationConfiguration类型的配置bean
@@ -30,6 +30,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 //它是通过类似于http://localhost:8080/v2/api-docs?group=sysGroup
 //这样的地址异步获取api信息(json格式)并显示到界面上
 //这个地址后台对应的Controller入口就是上下文的swagger2Controller类
+ */
 public class SwaggerConfig {
     @Value("${development}")
     private String author;

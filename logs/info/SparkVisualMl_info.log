@@ -16358,3 +16358,352 @@ java.io.IOException: Could not locate executable C:\Users\domino\Downloads\hadoo
 2017-12-11 16:16:23,019 INFO [http-nio-8080-exec-44]           com.spark.config.CorsFilter : 过滤器被使用
 2017-12-11 16:16:24,282 INFO [http-nio-8080-exec-28]           com.spark.config.CorsFilter : 过滤器被使用
 2017-12-11 16:16:24,734 INFO [http-nio-8080-exec-39]           com.spark.config.CorsFilter : 过滤器被使用
+2017-12-18 21:31:29,387 INFO [restartedMain]                       com.Application : Starting Application on master with PID 16265 (/root/IdeaProjects/SparkVisualMl/target/classes started by root in /root/IdeaProjects/SparkVisualMl)
+2017-12-18 21:31:29,392 INFO [restartedMain]                       com.Application : No active profile set, falling back to default profiles: default
+2017-12-18 21:31:30,524 INFO [restartedMain] org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@564ea59c: startup date [Mon Dec 18 21:31:30 PST 2017]; root of context hierarchy
+2017-12-18 21:31:30,772 INFO [background-preinit] org.hibernate.validator.internal.util.Version : HV000001: Hibernate Validator 5.3.4.Final
+2017-12-18 21:31:34,591 INFO [restartedMain] org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2017-12-18 21:31:36,089 INFO [restartedMain] org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2017-12-18 21:31:36,518 INFO [localhost-startStop-1] org.springframework.web.context.ContextLoader : Root WebApplicationContext: initialization completed in 6005 ms
+2017-12-18 21:31:36,807 INFO [localhost-startStop-1] org.springframework.boot.web.servlet.ServletRegistrationBean : Mapping servlet: 'dispatcherServlet' to [/]
+2017-12-18 21:31:36,818 INFO [localhost-startStop-1] org.springframework.boot.web.servlet.FilterRegistrationBean : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-12-18 21:31:36,821 INFO [localhost-startStop-1] org.springframework.boot.web.servlet.FilterRegistrationBean : Mapping filter: 'corsFilter' to: [/*]
+2017-12-18 21:31:37,466 INFO [restartedMain]         org.apache.spark.SparkContext : Running Spark version 2.2.0
+2017-12-18 21:31:37,818 WARN [restartedMain] org.apache.hadoop.util.NativeCodeLoader : Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2017-12-18 21:31:38,164 INFO [restartedMain]         org.apache.spark.SparkContext : Submitted application: "Sparkå¯è§åæºå¨å­¦ä¹ "
+2017-12-18 21:31:38,205 INFO [restartedMain]      org.apache.spark.SecurityManager : Changing view acls to: root
+2017-12-18 21:31:38,205 INFO [restartedMain]      org.apache.spark.SecurityManager : Changing modify acls to: root
+2017-12-18 21:31:38,206 INFO [restartedMain]      org.apache.spark.SecurityManager : Changing view acls groups to: 
+2017-12-18 21:31:38,206 INFO [restartedMain]      org.apache.spark.SecurityManager : Changing modify acls groups to: 
+2017-12-18 21:31:38,207 INFO [restartedMain]      org.apache.spark.SecurityManager : SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(root); groups with view permissions: Set(); users  with modify permissions: Set(root); groups with modify permissions: Set()
+2017-12-18 21:31:38,860 INFO [restartedMain]           org.apache.spark.util.Utils : Successfully started service 'sparkDriver' on port 42284.
+2017-12-18 21:31:38,897 INFO [restartedMain]             org.apache.spark.SparkEnv : Registering MapOutputTracker
+2017-12-18 21:31:38,937 INFO [restartedMain]             org.apache.spark.SparkEnv : Registering BlockManagerMaster
+2017-12-18 21:31:38,944 INFO [restartedMain] org.apache.spark.storage.BlockManagerMasterEndpoint : Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+2017-12-18 21:31:38,946 INFO [restartedMain] org.apache.spark.storage.BlockManagerMasterEndpoint : BlockManagerMasterEndpoint up
+2017-12-18 21:31:38,968 INFO [restartedMain] org.apache.spark.storage.DiskBlockManager : Created local directory at /tmp/blockmgr-f3c05d99-965d-4017-949f-ad24beec6a9a
+2017-12-18 21:31:39,007 INFO [restartedMain] org.apache.spark.storage.memory.MemoryStore : MemoryStore started with capacity 719.0 MB
+2017-12-18 21:31:39,160 INFO [restartedMain]             org.apache.spark.SparkEnv : Registering OutputCommitCoordinator
+2017-12-18 21:31:39,358 INFO [restartedMain]      org.spark_project.jetty.util.log : Logging initialized @16114ms
+2017-12-18 21:31:39,449 INFO [restartedMain] org.spark_project.jetty.server.Server : jetty-9.3.z-SNAPSHOT
+2017-12-18 21:31:39,470 INFO [restartedMain] org.spark_project.jetty.server.Server : Started @16227ms
+2017-12-18 21:31:39,501 INFO [restartedMain] org.spark_project.jetty.server.AbstractConnector : Started ServerConnector@3e3588b3{HTTP/1.1,[http/1.1]}{0.0.0.0:4040}
+2017-12-18 21:31:39,501 INFO [restartedMain]           org.apache.spark.util.Utils : Successfully started service 'SparkUI' on port 4040.
+2017-12-18 21:31:39,544 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@45797868{/jobs,null,AVAILABLE,@Spark}
+2017-12-18 21:31:39,547 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@173dddfb{/jobs/json,null,AVAILABLE,@Spark}
+2017-12-18 21:31:39,550 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@53ee598e{/jobs/job,null,AVAILABLE,@Spark}
+2017-12-18 21:31:39,551 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@6583a49f{/jobs/job/json,null,AVAILABLE,@Spark}
+2017-12-18 21:31:39,551 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@459b00c9{/stages,null,AVAILABLE,@Spark}
+2017-12-18 21:31:39,552 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@1bc4dad5{/stages/json,null,AVAILABLE,@Spark}
+2017-12-18 21:31:39,554 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@4719f814{/stages/stage,null,AVAILABLE,@Spark}
+2017-12-18 21:31:39,555 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@5b9150e1{/stages/stage/json,null,AVAILABLE,@Spark}
+2017-12-18 21:31:39,556 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@1d809c48{/stages/pool,null,AVAILABLE,@Spark}
+2017-12-18 21:31:39,560 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@198cb57e{/stages/pool/json,null,AVAILABLE,@Spark}
+2017-12-18 21:31:39,561 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@665790c6{/storage,null,AVAILABLE,@Spark}
+2017-12-18 21:31:39,561 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@dc62f58{/storage/json,null,AVAILABLE,@Spark}
+2017-12-18 21:31:39,562 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@49726547{/storage/rdd,null,AVAILABLE,@Spark}
+2017-12-18 21:31:39,563 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@6e6ee110{/storage/rdd/json,null,AVAILABLE,@Spark}
+2017-12-18 21:31:39,564 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@6f7c5240{/environment,null,AVAILABLE,@Spark}
+2017-12-18 21:31:39,566 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@518d90d2{/environment/json,null,AVAILABLE,@Spark}
+2017-12-18 21:31:39,567 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@1b58bc3a{/executors,null,AVAILABLE,@Spark}
+2017-12-18 21:31:39,568 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@7ab5ddb8{/executors/json,null,AVAILABLE,@Spark}
+2017-12-18 21:31:39,570 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@6ab04727{/executors/threadDump,null,AVAILABLE,@Spark}
+2017-12-18 21:31:39,570 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@6792f023{/executors/threadDump/json,null,AVAILABLE,@Spark}
+2017-12-18 21:31:39,583 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@78bab43{/static,null,AVAILABLE,@Spark}
+2017-12-18 21:31:39,584 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@6b233cf0{/,null,AVAILABLE,@Spark}
+2017-12-18 21:31:39,585 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@2dbe0320{/api,null,AVAILABLE,@Spark}
+2017-12-18 21:31:39,590 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@8471cd8{/jobs/job/kill,null,AVAILABLE,@Spark}
+2017-12-18 21:31:39,592 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@80e948{/stages/stage/kill,null,AVAILABLE,@Spark}
+2017-12-18 21:31:39,595 INFO [restartedMain]           org.apache.spark.ui.SparkUI : Bound SparkUI to 0.0.0.0, and started at http://192.168.107.131:4040
+2017-12-18 21:31:39,871 INFO [restartedMain]    org.apache.spark.executor.Executor : Starting executor ID driver on host localhost
+2017-12-18 21:31:39,922 INFO [restartedMain]           org.apache.spark.util.Utils : Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 36587.
+2017-12-18 21:31:39,923 INFO [restartedMain] org.apache.spark.network.netty.NettyBlockTransferService : Server created on 192.168.107.131:36587
+2017-12-18 21:31:39,924 INFO [restartedMain] org.apache.spark.storage.BlockManager : Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+2017-12-18 21:31:39,926 INFO [restartedMain] org.apache.spark.storage.BlockManagerMaster : Registering BlockManager BlockManagerId(driver, 192.168.107.131, 36587, None)
+2017-12-18 21:31:39,929 INFO [dispatcher-event-loop-0] org.apache.spark.storage.BlockManagerMasterEndpoint : Registering block manager 192.168.107.131:36587 with 719.0 MB RAM, BlockManagerId(driver, 192.168.107.131, 36587, None)
+2017-12-18 21:31:39,937 INFO [restartedMain] org.apache.spark.storage.BlockManagerMaster : Registered BlockManager BlockManagerId(driver, 192.168.107.131, 36587, None)
+2017-12-18 21:31:39,937 INFO [restartedMain] org.apache.spark.storage.BlockManager : Initialized BlockManager: BlockManagerId(driver, 192.168.107.131, 36587, None)
+2017-12-18 21:31:39,970 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@1e242509{/metrics/json,null,AVAILABLE,@Spark}
+2017-12-18 21:31:40,071 WARN [restartedMain]         org.apache.spark.SparkContext : Using an existing SparkContext; some configuration may not take effect.
+2017-12-18 21:31:40,276 INFO [restartedMain] org.apache.spark.sql.internal.SharedState : Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir ('file:/root/IdeaProjects/SparkVisualMl/spark-warehouse').
+2017-12-18 21:31:40,279 INFO [restartedMain] org.apache.spark.sql.internal.SharedState : Warehouse path is 'file:/root/IdeaProjects/SparkVisualMl/spark-warehouse'.
+2017-12-18 21:31:40,299 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@6a6ca4af{/SQL,null,AVAILABLE,@Spark}
+2017-12-18 21:31:40,311 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@d1eb4f8{/SQL/json,null,AVAILABLE,@Spark}
+2017-12-18 21:31:40,321 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@637fac97{/SQL/execution,null,AVAILABLE,@Spark}
+2017-12-18 21:31:40,329 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@5813fe75{/SQL/execution/json,null,AVAILABLE,@Spark}
+2017-12-18 21:31:40,342 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@649b6203{/static/sql,null,AVAILABLE,@Spark}
+2017-12-18 21:31:41,108 WARN [restartedMain] org.apache.spark.sql.internal.SharedState : URL.setURLStreamHandlerFactory failed to set FsUrlStreamHandlerFactory
+2017-12-18 21:31:41,455 INFO [restartedMain] org.apache.spark.sql.execution.streaming.state.StateStoreCoordinatorRef : Registered StateStoreCoordinator endpoint
+2017-12-18 21:31:41,518 WARN [restartedMain] org.apache.spark.sql.SparkSession$Builder : Using an existing SparkSession; some configuration may not take effect.
+2017-12-18 21:31:42,233 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/index],methods=[GET]}" onto public java.lang.String com.spark.control.AlgorithmControl.index()
+2017-12-18 21:31:42,242 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/test],methods=[GET]}" onto public java.lang.String com.spark.control.AlgorithmControl.test()
+2017-12-18 21:31:42,245 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/algorithm/wordCountInFile],methods=[GET]}" onto public com.alibaba.fastjson.JSONObject com.spark.control.AlgorithmRestControl.getWordCountInFile(java.lang.String)
+2017-12-18 21:31:42,245 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/algorithm/sqls],methods=[GET]}" onto public java.lang.String com.spark.control.AlgorithmRestControl.sqlExecRes(java.lang.String)
+2017-12-18 21:31:42,245 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/algorithm/datasource/mysql],methods=[GET]}" onto public java.lang.String com.spark.control.AlgorithmRestControl.dataSourceForMysql(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+2017-12-18 21:31:42,249 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/list],methods=[GET]}" onto public java.lang.String com.spark.control.TestControl.getAccounts()
+2017-12-18 21:31:42,249 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/dburl]}" onto public java.lang.String com.spark.control.TestControl.geturl()
+2017-12-18 21:31:42,249 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/sc],methods=[GET]}" onto public org.apache.spark.SparkContext com.spark.control.TestControl.geSc()
+2017-12-18 21:31:42,249 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/name],methods=[GET]}" onto public java.lang.String com.spark.control.TestControl.geName()
+2017-12-18 21:31:42,251 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/hello/{id}],methods=[GET]}" onto public java.lang.String com.spark.control.TestControl.sayHello(java.lang.Integer)
+2017-12-18 21:31:42,251 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/hello1],methods=[GET]}" onto public java.lang.String com.spark.control.TestControl.sayHello(java.lang.Integer,java.lang.String)
+2017-12-18 21:31:42,251 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/hello],methods=[GET]}" onto public java.lang.String com.spark.control.TestControl.sayHello1(java.lang.Integer)
+2017-12-18 21:31:42,256 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/utils/uploadjar],methods=[POST]}" onto public org.springframework.http.ResponseEntity com.spark.control.UtilControl.uploadJar(org.springframework.web.multipart.MultipartFile)
+2017-12-18 21:31:42,262 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/v2/api-docs],methods=[GET],produces=[application/json || application/hal+json]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)
+2017-12-18 21:31:42,268 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/swagger-resources]}" onto org.springframework.http.ResponseEntity<java.util.List<springfox.documentation.swagger.web.SwaggerResource>> springfox.documentation.swagger.web.ApiResourceController.swaggerResources()
+2017-12-18 21:31:42,270 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/swagger-resources/configuration/ui]}" onto org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.UiConfiguration> springfox.documentation.swagger.web.ApiResourceController.uiConfiguration()
+2017-12-18 21:31:42,270 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/swagger-resources/configuration/security]}" onto org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.SecurityConfiguration> springfox.documentation.swagger.web.ApiResourceController.securityConfiguration()
+2017-12-18 21:31:42,284 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-12-18 21:31:42,284 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-12-18 21:31:42,628 INFO [restartedMain] org.springframework.web.servlet.handler.SimpleUrlHandlerMapping : Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-12-18 21:31:42,724 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@564ea59c: startup date [Mon Dec 18 21:31:30 PST 2017]; root of context hierarchy
+2017-12-18 21:31:42,751 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter : Detected ResponseBodyAdvice bean in com.ruijc.fastjson.advice.FastJsonResponseBodyAdvice
+2017-12-18 21:31:42,895 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver : Detected ResponseBodyAdvice implementation in com.ruijc.fastjson.advice.FastJsonResponseBodyAdvice
+2017-12-18 21:31:44,394 INFO [restartedMain] org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2017-12-18 21:31:44,491 INFO [restartedMain] org.springframework.jmx.export.annotation.AnnotationMBeanExporter : Registering beans for JMX exposure on startup
+2017-12-18 21:31:44,507 INFO [restartedMain] org.springframework.context.support.DefaultLifecycleProcessor : Starting beans in phase 2147483647
+2017-12-18 21:31:44,507 INFO [restartedMain] springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper : Context refreshed
+2017-12-18 21:31:44,549 INFO [restartedMain] springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2017-12-18 21:31:44,592 INFO [restartedMain] springfox.documentation.spring.web.scanners.ApiListingReferenceScanner : Scanning for api listing references
+2017-12-18 21:31:45,383 WARN [restartedMain] springfox.documentation.schema.property.CachingModelPropertiesProvider : Exception calculating properties for model(org.apache.spark.SparkConf) -> ModelContext{type=org.apache.spark.SparkConf, isReturnType=true}. java.lang.IllegalArgumentException: Conflicting setter definitions for property "executorEnv": org.apache.spark.SparkConf#setExecutorEnv(1 params) vs org.apache.spark.SparkConf#setExecutorEnv(1 params)
+2017-12-18 21:31:45,500 WARN [restartedMain] springfox.documentation.schema.property.CachingModelPropertiesProvider : Exception calculating properties for model(org.apache.spark.SparkConf) -> ModelContext{type=org.apache.spark.SparkConf, isReturnType=true}. java.lang.IllegalArgumentException: Conflicting setter definitions for property "executorEnv": org.apache.spark.SparkConf#setExecutorEnv(1 params) vs org.apache.spark.SparkConf#setExecutorEnv(1 params)
+2017-12-18 21:31:45,696 WARN [restartedMain] springfox.documentation.schema.property.CachingModelPropertiesProvider : Exception calculating properties for model(org.apache.spark.SparkConf) -> ModelContext{type=org.apache.spark.SparkConf, isReturnType=true}. java.lang.IllegalArgumentException: Conflicting setter definitions for property "executorEnv": org.apache.spark.SparkConf#setExecutorEnv(1 params) vs org.apache.spark.SparkConf#setExecutorEnv(1 params)
+2017-12-18 21:31:45,760 INFO [restartedMain] springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator : Generating unique operation named: sayHelloUsingGET_1
+2017-12-18 21:31:45,886 ERROR [restartedMain] org.apache.coyote.http11.Http11NioProtocol : Failed to start end point associated with ProtocolHandler [http-nio-8080]
+java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:210)
+	at org.apache.tomcat.util.net.AbstractEndpoint.start(AbstractEndpoint.java:980)
+	at org.apache.coyote.AbstractProtocol.start(AbstractProtocol.java:573)
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:993)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.StandardService.addConnector(StandardService.java:225)
+	at org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer.addPreviouslyRemovedConnectors(TomcatEmbeddedServletContainer.java:247)
+	at org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer.start(TomcatEmbeddedServletContainer.java:190)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.startEmbeddedServletContainer(EmbeddedWebApplicationContext.java:297)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.finishRefresh(EmbeddedWebApplicationContext.java:145)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:545)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:737)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:370)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:314)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1162)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1151)
+	at com.Application.main(Application.java:23)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+2017-12-18 21:31:45,892 ERROR [restartedMain] org.apache.catalina.core.StandardService : Failed to start connector [Connector[HTTP/1.1-8080]]
+org.apache.catalina.LifecycleException: Failed to start component [Connector[HTTP/1.1-8080]]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:167)
+	at org.apache.catalina.core.StandardService.addConnector(StandardService.java:225)
+	at org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer.addPreviouslyRemovedConnectors(TomcatEmbeddedServletContainer.java:247)
+	at org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer.start(TomcatEmbeddedServletContainer.java:190)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.startEmbeddedServletContainer(EmbeddedWebApplicationContext.java:297)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.finishRefresh(EmbeddedWebApplicationContext.java:145)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:545)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:737)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:370)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:314)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1162)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1151)
+	at com.Application.main(Application.java:23)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.apache.catalina.LifecycleException: service.getName(): "Tomcat";  Protocol handler start failed
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1000)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	... 18 more
+Caused by: java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:210)
+	at org.apache.tomcat.util.net.AbstractEndpoint.start(AbstractEndpoint.java:980)
+	at org.apache.coyote.AbstractProtocol.start(AbstractProtocol.java:573)
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:993)
+	... 19 more
+2017-12-18 21:31:45,951 INFO [restartedMain] org.apache.catalina.core.StandardService : Stopping service Tomcat
+2017-12-18 21:31:45,992 WARN [localhost-startStop-1] org.apache.catalina.loader.WebappClassLoaderBase : The web application [ROOT] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+ com.mysql.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:43)
+2017-12-18 21:31:46,049 ERROR [restartedMain] org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The Tomcat connector configured to listen on port 8080 failed to start. The port may already be in use or the connector may be misconfigured.
+
+Action:
+
+Verify the connector's configuration, identify and stop any process that's listening on port 8080, or configure this application to listen on another port.
+
+2017-12-18 21:31:46,057 INFO [restartedMain] org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@564ea59c: startup date [Mon Dec 18 21:31:30 PST 2017]; root of context hierarchy
+2017-12-18 21:31:46,067 INFO [restartedMain] org.springframework.context.support.DefaultLifecycleProcessor : Stopping beans in phase 2147483647
+2017-12-18 21:31:46,072 INFO [restartedMain] org.springframework.jmx.export.annotation.AnnotationMBeanExporter : Unregistering JMX-exposed beans on shutdown
+2017-12-18 21:31:46,095 INFO [restartedMain] org.spark_project.jetty.server.AbstractConnector : Stopped Spark@3e3588b3{HTTP/1.1,[http/1.1]}{0.0.0.0:4040}
+2017-12-18 21:31:46,114 INFO [restartedMain]           org.apache.spark.ui.SparkUI : Stopped Spark web UI at http://192.168.107.131:4040
+2017-12-18 21:31:46,133 INFO [dispatcher-event-loop-1] org.apache.spark.MapOutputTrackerMasterEndpoint : MapOutputTrackerMasterEndpoint stopped!
+2017-12-18 21:31:46,187 INFO [restartedMain] org.apache.spark.storage.memory.MemoryStore : MemoryStore cleared
+2017-12-18 21:31:46,187 INFO [restartedMain] org.apache.spark.storage.BlockManager : BlockManager stopped
+2017-12-18 21:31:46,196 INFO [restartedMain] org.apache.spark.storage.BlockManagerMaster : BlockManagerMaster stopped
+2017-12-18 21:31:46,201 INFO [dispatcher-event-loop-1] org.apache.spark.scheduler.OutputCommitCoordinator$OutputCommitCoordinatorEndpoint : OutputCommitCoordinator stopped!
+2017-12-18 21:31:46,206 INFO [restartedMain]         org.apache.spark.SparkContext : Successfully stopped SparkContext
+2017-12-18 21:31:46,206 INFO [restartedMain]         org.apache.spark.SparkContext : SparkContext already stopped.
+2017-12-18 21:31:46,231 INFO [Thread-6] org.apache.spark.util.ShutdownHookManager : Shutdown hook called
+2017-12-18 21:31:46,238 INFO [Thread-6] org.apache.spark.util.ShutdownHookManager : Deleting directory /tmp/spark-313a74cc-d692-480a-9046-19645474bad5
+2017-12-18 21:32:25,567 INFO [restartedMain]                       com.Application : Starting Application on master with PID 16408 (/root/IdeaProjects/SparkVisualMl/target/classes started by root in /root/IdeaProjects/SparkVisualMl)
+2017-12-18 21:32:25,587 INFO [restartedMain]                       com.Application : No active profile set, falling back to default profiles: default
+2017-12-18 21:32:26,949 INFO [restartedMain] org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@434cc5dc: startup date [Mon Dec 18 21:32:26 PST 2017]; root of context hierarchy
+2017-12-18 21:32:27,108 INFO [background-preinit] org.hibernate.validator.internal.util.Version : HV000001: Hibernate Validator 5.3.4.Final
+2017-12-18 21:32:29,959 INFO [restartedMain] org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2017-12-18 21:32:31,533 INFO [restartedMain] org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8081 (http)
+2017-12-18 21:32:31,885 INFO [localhost-startStop-1] org.springframework.web.context.ContextLoader : Root WebApplicationContext: initialization completed in 4940 ms
+2017-12-18 21:32:32,116 INFO [localhost-startStop-1] org.springframework.boot.web.servlet.ServletRegistrationBean : Mapping servlet: 'dispatcherServlet' to [/]
+2017-12-18 21:32:32,125 INFO [localhost-startStop-1] org.springframework.boot.web.servlet.FilterRegistrationBean : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-12-18 21:32:32,126 INFO [localhost-startStop-1] org.springframework.boot.web.servlet.FilterRegistrationBean : Mapping filter: 'corsFilter' to: [/*]
+2017-12-18 21:32:32,902 INFO [restartedMain]         org.apache.spark.SparkContext : Running Spark version 2.2.0
+2017-12-18 21:32:33,224 WARN [restartedMain] org.apache.hadoop.util.NativeCodeLoader : Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2017-12-18 21:32:33,542 INFO [restartedMain]         org.apache.spark.SparkContext : Submitted application: "Sparkå¯è§åæºå¨å­¦ä¹ "
+2017-12-18 21:32:33,584 INFO [restartedMain]      org.apache.spark.SecurityManager : Changing view acls to: root
+2017-12-18 21:32:33,585 INFO [restartedMain]      org.apache.spark.SecurityManager : Changing modify acls to: root
+2017-12-18 21:32:33,585 INFO [restartedMain]      org.apache.spark.SecurityManager : Changing view acls groups to: 
+2017-12-18 21:32:33,585 INFO [restartedMain]      org.apache.spark.SecurityManager : Changing modify acls groups to: 
+2017-12-18 21:32:33,588 INFO [restartedMain]      org.apache.spark.SecurityManager : SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(root); groups with view permissions: Set(); users  with modify permissions: Set(root); groups with modify permissions: Set()
+2017-12-18 21:32:34,162 INFO [restartedMain]           org.apache.spark.util.Utils : Successfully started service 'sparkDriver' on port 35366.
+2017-12-18 21:32:34,201 INFO [restartedMain]             org.apache.spark.SparkEnv : Registering MapOutputTracker
+2017-12-18 21:32:34,231 INFO [restartedMain]             org.apache.spark.SparkEnv : Registering BlockManagerMaster
+2017-12-18 21:32:34,236 INFO [restartedMain] org.apache.spark.storage.BlockManagerMasterEndpoint : Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+2017-12-18 21:32:34,238 INFO [restartedMain] org.apache.spark.storage.BlockManagerMasterEndpoint : BlockManagerMasterEndpoint up
+2017-12-18 21:32:34,255 INFO [restartedMain] org.apache.spark.storage.DiskBlockManager : Created local directory at /tmp/blockmgr-83d344b5-6db4-4b44-8bef-7f9f860ea682
+2017-12-18 21:32:34,291 INFO [restartedMain] org.apache.spark.storage.memory.MemoryStore : MemoryStore started with capacity 719.0 MB
+2017-12-18 21:32:34,354 INFO [restartedMain]             org.apache.spark.SparkEnv : Registering OutputCommitCoordinator
+2017-12-18 21:32:34,577 INFO [restartedMain]      org.spark_project.jetty.util.log : Logging initialized @12539ms
+2017-12-18 21:32:34,700 INFO [restartedMain] org.spark_project.jetty.server.Server : jetty-9.3.z-SNAPSHOT
+2017-12-18 21:32:34,737 INFO [restartedMain] org.spark_project.jetty.server.Server : Started @12706ms
+2017-12-18 21:32:34,772 INFO [restartedMain] org.spark_project.jetty.server.AbstractConnector : Started ServerConnector@28f09531{HTTP/1.1,[http/1.1]}{0.0.0.0:4040}
+2017-12-18 21:32:34,773 INFO [restartedMain]           org.apache.spark.util.Utils : Successfully started service 'SparkUI' on port 4040.
+2017-12-18 21:32:34,852 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@2380d7f8{/jobs,null,AVAILABLE,@Spark}
+2017-12-18 21:32:34,853 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@40de326e{/jobs/json,null,AVAILABLE,@Spark}
+2017-12-18 21:32:34,854 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@a3157e1{/jobs/job,null,AVAILABLE,@Spark}
+2017-12-18 21:32:34,856 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@2d7fc5a0{/jobs/job/json,null,AVAILABLE,@Spark}
+2017-12-18 21:32:34,856 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@2488b313{/stages,null,AVAILABLE,@Spark}
+2017-12-18 21:32:34,857 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@2ffdb815{/stages/json,null,AVAILABLE,@Spark}
+2017-12-18 21:32:34,863 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@6b5562ae{/stages/stage,null,AVAILABLE,@Spark}
+2017-12-18 21:32:34,867 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@5c06021f{/stages/stage/json,null,AVAILABLE,@Spark}
+2017-12-18 21:32:34,870 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@67dc4560{/stages/pool,null,AVAILABLE,@Spark}
+2017-12-18 21:32:34,873 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@251778bb{/stages/pool/json,null,AVAILABLE,@Spark}
+2017-12-18 21:32:34,873 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@44d6ccfd{/storage,null,AVAILABLE,@Spark}
+2017-12-18 21:32:34,876 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@7f3939a4{/storage/json,null,AVAILABLE,@Spark}
+2017-12-18 21:32:34,878 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@6f8ba5c9{/storage/rdd,null,AVAILABLE,@Spark}
+2017-12-18 21:32:34,881 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@124b57ca{/storage/rdd/json,null,AVAILABLE,@Spark}
+2017-12-18 21:32:34,882 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@7cd5ba2d{/environment,null,AVAILABLE,@Spark}
+2017-12-18 21:32:34,885 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@5dff35ba{/environment/json,null,AVAILABLE,@Spark}
+2017-12-18 21:32:34,885 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@55ef87cf{/executors,null,AVAILABLE,@Spark}
+2017-12-18 21:32:34,887 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@7276619f{/executors/json,null,AVAILABLE,@Spark}
+2017-12-18 21:32:34,888 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@def8bad{/executors/threadDump,null,AVAILABLE,@Spark}
+2017-12-18 21:32:34,888 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@1c64de71{/executors/threadDump/json,null,AVAILABLE,@Spark}
+2017-12-18 21:32:34,905 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@74a15ad9{/static,null,AVAILABLE,@Spark}
+2017-12-18 21:32:34,906 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@5a11f7d3{/,null,AVAILABLE,@Spark}
+2017-12-18 21:32:34,909 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@398a9886{/api,null,AVAILABLE,@Spark}
+2017-12-18 21:32:34,913 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@74c0c86e{/jobs/job/kill,null,AVAILABLE,@Spark}
+2017-12-18 21:32:34,914 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@63a3404{/stages/stage/kill,null,AVAILABLE,@Spark}
+2017-12-18 21:32:34,918 INFO [restartedMain]           org.apache.spark.ui.SparkUI : Bound SparkUI to 0.0.0.0, and started at http://192.168.107.131:4040
+2017-12-18 21:32:35,170 INFO [restartedMain]    org.apache.spark.executor.Executor : Starting executor ID driver on host localhost
+2017-12-18 21:32:35,257 INFO [restartedMain]           org.apache.spark.util.Utils : Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 42483.
+2017-12-18 21:32:35,258 INFO [restartedMain] org.apache.spark.network.netty.NettyBlockTransferService : Server created on 192.168.107.131:42483
+2017-12-18 21:32:35,259 INFO [restartedMain] org.apache.spark.storage.BlockManager : Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+2017-12-18 21:32:35,260 INFO [restartedMain] org.apache.spark.storage.BlockManagerMaster : Registering BlockManager BlockManagerId(driver, 192.168.107.131, 42483, None)
+2017-12-18 21:32:35,265 INFO [dispatcher-event-loop-0] org.apache.spark.storage.BlockManagerMasterEndpoint : Registering block manager 192.168.107.131:42483 with 719.0 MB RAM, BlockManagerId(driver, 192.168.107.131, 42483, None)
+2017-12-18 21:32:35,268 INFO [restartedMain] org.apache.spark.storage.BlockManagerMaster : Registered BlockManager BlockManagerId(driver, 192.168.107.131, 42483, None)
+2017-12-18 21:32:35,269 INFO [restartedMain] org.apache.spark.storage.BlockManager : Initialized BlockManager: BlockManagerId(driver, 192.168.107.131, 42483, None)
+2017-12-18 21:32:35,308 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@1f38e03{/metrics/json,null,AVAILABLE,@Spark}
+2017-12-18 21:32:35,504 WARN [restartedMain]         org.apache.spark.SparkContext : Using an existing SparkContext; some configuration may not take effect.
+2017-12-18 21:32:35,621 INFO [restartedMain] org.apache.spark.sql.internal.SharedState : Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir ('file:/root/IdeaProjects/SparkVisualMl/spark-warehouse/').
+2017-12-18 21:32:35,621 INFO [restartedMain] org.apache.spark.sql.internal.SharedState : Warehouse path is 'file:/root/IdeaProjects/SparkVisualMl/spark-warehouse/'.
+2017-12-18 21:32:35,649 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@300314f3{/SQL,null,AVAILABLE,@Spark}
+2017-12-18 21:32:35,657 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@46d0bb66{/SQL/json,null,AVAILABLE,@Spark}
+2017-12-18 21:32:35,664 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@4201d8d8{/SQL/execution,null,AVAILABLE,@Spark}
+2017-12-18 21:32:35,668 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@488dd89a{/SQL/execution/json,null,AVAILABLE,@Spark}
+2017-12-18 21:32:35,681 INFO [restartedMain] org.spark_project.jetty.server.handler.ContextHandler : Started o.s.j.s.ServletContextHandler@17792ecb{/static/sql,null,AVAILABLE,@Spark}
+2017-12-18 21:32:36,555 WARN [restartedMain] org.apache.spark.sql.internal.SharedState : URL.setURLStreamHandlerFactory failed to set FsUrlStreamHandlerFactory
+2017-12-18 21:32:36,796 INFO [restartedMain] org.apache.spark.sql.execution.streaming.state.StateStoreCoordinatorRef : Registered StateStoreCoordinator endpoint
+2017-12-18 21:32:36,856 WARN [restartedMain] org.apache.spark.sql.SparkSession$Builder : Using an existing SparkSession; some configuration may not take effect.
+2017-12-18 21:32:37,574 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/index],methods=[GET]}" onto public java.lang.String com.spark.control.AlgorithmControl.index()
+2017-12-18 21:32:37,575 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/test],methods=[GET]}" onto public java.lang.String com.spark.control.AlgorithmControl.test()
+2017-12-18 21:32:37,583 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/algorithm/wordCountInFile],methods=[GET]}" onto public com.alibaba.fastjson.JSONObject com.spark.control.AlgorithmRestControl.getWordCountInFile(java.lang.String)
+2017-12-18 21:32:37,583 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/algorithm/sqls],methods=[GET]}" onto public java.lang.String com.spark.control.AlgorithmRestControl.sqlExecRes(java.lang.String)
+2017-12-18 21:32:37,583 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/algorithm/datasource/mysql],methods=[GET]}" onto public java.lang.String com.spark.control.AlgorithmRestControl.dataSourceForMysql(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+2017-12-18 21:32:37,590 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/list],methods=[GET]}" onto public java.lang.String com.spark.control.TestControl.getAccounts()
+2017-12-18 21:32:37,590 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/dburl]}" onto public java.lang.String com.spark.control.TestControl.geturl()
+2017-12-18 21:32:37,591 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/sc],methods=[GET]}" onto public org.apache.spark.SparkContext com.spark.control.TestControl.geSc()
+2017-12-18 21:32:37,591 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/name],methods=[GET]}" onto public java.lang.String com.spark.control.TestControl.geName()
+2017-12-18 21:32:37,596 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/hello/{id}],methods=[GET]}" onto public java.lang.String com.spark.control.TestControl.sayHello(java.lang.Integer)
+2017-12-18 21:32:37,596 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/hello1],methods=[GET]}" onto public java.lang.String com.spark.control.TestControl.sayHello(java.lang.Integer,java.lang.String)
+2017-12-18 21:32:37,597 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/hello],methods=[GET]}" onto public java.lang.String com.spark.control.TestControl.sayHello1(java.lang.Integer)
+2017-12-18 21:32:37,601 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/utils/uploadjar],methods=[POST]}" onto public org.springframework.http.ResponseEntity com.spark.control.UtilControl.uploadJar(org.springframework.web.multipart.MultipartFile)
+2017-12-18 21:32:37,606 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/v2/api-docs],methods=[GET],produces=[application/json || application/hal+json]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)
+2017-12-18 21:32:37,612 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/swagger-resources]}" onto org.springframework.http.ResponseEntity<java.util.List<springfox.documentation.swagger.web.SwaggerResource>> springfox.documentation.swagger.web.ApiResourceController.swaggerResources()
+2017-12-18 21:32:37,612 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/swagger-resources/configuration/ui]}" onto org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.UiConfiguration> springfox.documentation.swagger.web.ApiResourceController.uiConfiguration()
+2017-12-18 21:32:37,615 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/swagger-resources/configuration/security]}" onto org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.SecurityConfiguration> springfox.documentation.swagger.web.ApiResourceController.securityConfiguration()
+2017-12-18 21:32:37,631 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-12-18 21:32:37,633 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-12-18 21:32:37,997 INFO [restartedMain] org.springframework.web.servlet.handler.SimpleUrlHandlerMapping : Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-12-18 21:32:38,079 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@434cc5dc: startup date [Mon Dec 18 21:32:26 PST 2017]; root of context hierarchy
+2017-12-18 21:32:38,092 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter : Detected ResponseBodyAdvice bean in com.ruijc.fastjson.advice.FastJsonResponseBodyAdvice
+2017-12-18 21:32:38,169 INFO [restartedMain] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver : Detected ResponseBodyAdvice implementation in com.ruijc.fastjson.advice.FastJsonResponseBodyAdvice
+2017-12-18 21:32:39,921 INFO [restartedMain] org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2017-12-18 21:32:40,018 INFO [restartedMain] org.springframework.jmx.export.annotation.AnnotationMBeanExporter : Registering beans for JMX exposure on startup
+2017-12-18 21:32:40,034 INFO [restartedMain] org.springframework.context.support.DefaultLifecycleProcessor : Starting beans in phase 2147483647
+2017-12-18 21:32:40,036 INFO [restartedMain] springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper : Context refreshed
+2017-12-18 21:32:40,081 INFO [restartedMain] springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2017-12-18 21:32:40,123 INFO [restartedMain] springfox.documentation.spring.web.scanners.ApiListingReferenceScanner : Scanning for api listing references
+2017-12-18 21:32:40,865 WARN [restartedMain] springfox.documentation.schema.property.CachingModelPropertiesProvider : Exception calculating properties for model(org.apache.spark.SparkConf) -> ModelContext{type=org.apache.spark.SparkConf, isReturnType=true}. java.lang.IllegalArgumentException: Conflicting setter definitions for property "executorEnv": org.apache.spark.SparkConf#setExecutorEnv(1 params) vs org.apache.spark.SparkConf#setExecutorEnv(1 params)
+2017-12-18 21:32:40,979 WARN [restartedMain] springfox.documentation.schema.property.CachingModelPropertiesProvider : Exception calculating properties for model(org.apache.spark.SparkConf) -> ModelContext{type=org.apache.spark.SparkConf, isReturnType=true}. java.lang.IllegalArgumentException: Conflicting setter definitions for property "executorEnv": org.apache.spark.SparkConf#setExecutorEnv(1 params) vs org.apache.spark.SparkConf#setExecutorEnv(1 params)
+2017-12-18 21:32:41,200 WARN [restartedMain] springfox.documentation.schema.property.CachingModelPropertiesProvider : Exception calculating properties for model(org.apache.spark.SparkConf) -> ModelContext{type=org.apache.spark.SparkConf, isReturnType=true}. java.lang.IllegalArgumentException: Conflicting setter definitions for property "executorEnv": org.apache.spark.SparkConf#setExecutorEnv(1 params) vs org.apache.spark.SparkConf#setExecutorEnv(1 params)
+2017-12-18 21:32:41,263 INFO [restartedMain] springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator : Generating unique operation named: sayHelloUsingGET_1
+2017-12-18 21:32:41,470 INFO [restartedMain] org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8081 (http)
+2017-12-18 21:32:41,483 INFO [restartedMain]                       com.Application : Started Application in 17.267 seconds (JVM running for 19.451)
+2017-12-18 21:33:24,376 INFO [http-nio-8081-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2017-12-18 21:33:24,377 INFO [http-nio-8081-exec-1] org.springframework.web.servlet.DispatcherServlet : FrameworkServlet 'dispatcherServlet': initialization started
+2017-12-18 21:33:24,415 INFO [http-nio-8081-exec-1] org.springframework.web.servlet.DispatcherServlet : FrameworkServlet 'dispatcherServlet': initialization completed in 38 ms
+2017-12-18 21:33:24,436 INFO [http-nio-8081-exec-1]           com.spark.config.CorsFilter : 过滤器被使用
+2017-12-18 21:33:24,498 INFO [http-nio-8081-exec-1]          org.thymeleaf.TemplateEngine : [THYMELEAF] INITIALIZING TEMPLATE ENGINE
+2017-12-18 21:33:24,623 INFO [http-nio-8081-exec-1] org.thymeleaf.templateresolver.AbstractTemplateResolver : [THYMELEAF] INITIALIZING TEMPLATE RESOLVER: org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver
+2017-12-18 21:33:24,626 INFO [http-nio-8081-exec-1] org.thymeleaf.templateresolver.AbstractTemplateResolver : [THYMELEAF] TEMPLATE RESOLVER INITIALIZED OK
+2017-12-18 21:33:24,627 INFO [http-nio-8081-exec-1] org.thymeleaf.messageresolver.AbstractMessageResolver : [THYMELEAF] INITIALIZING MESSAGE RESOLVER: org.thymeleaf.spring4.messageresolver.SpringMessageResolver
+2017-12-18 21:33:24,629 INFO [http-nio-8081-exec-1] org.thymeleaf.messageresolver.AbstractMessageResolver : [THYMELEAF] MESSAGE RESOLVER INITIALIZED OK
+2017-12-18 21:33:24,670 INFO [http-nio-8081-exec-1]          org.thymeleaf.TemplateEngine : [THYMELEAF] TEMPLATE ENGINE INITIALIZED
+2017-12-18 21:33:24,808 INFO [http-nio-8081-exec-2]           com.spark.config.CorsFilter : 过滤器被使用
+2017-12-18 21:33:24,809 INFO [http-nio-8081-exec-4]           com.spark.config.CorsFilter : 过滤器被使用
+2017-12-18 21:33:24,809 INFO [http-nio-8081-exec-5]           com.spark.config.CorsFilter : 过滤器被使用
+2017-12-18 21:33:24,808 INFO [http-nio-8081-exec-3]           com.spark.config.CorsFilter : 过滤器被使用
+2017-12-18 21:33:24,811 INFO [http-nio-8081-exec-6]           com.spark.config.CorsFilter : 过滤器被使用
+2017-12-18 21:33:24,827 INFO [http-nio-8081-exec-7]           com.spark.config.CorsFilter : 过滤器被使用
+2017-12-18 21:33:24,953 INFO [http-nio-8081-exec-6]           com.spark.config.CorsFilter : 过滤器被使用
+2017-12-18 21:33:24,971 INFO [http-nio-8081-exec-8]           com.spark.config.CorsFilter : 过滤器被使用
+2017-12-18 21:33:24,980 INFO [http-nio-8081-exec-9]           com.spark.config.CorsFilter : 过滤器被使用
+2017-12-18 21:33:24,992 INFO [http-nio-8081-exec-1]           com.spark.config.CorsFilter : 过滤器被使用
+2017-12-18 21:33:24,979 INFO [http-nio-8081-exec-10]           com.spark.config.CorsFilter : 过滤器被使用
+2017-12-18 21:33:25,009 INFO [http-nio-8081-exec-1]           com.spark.config.CorsFilter : 过滤器被使用
+2017-12-18 21:33:25,015 INFO [http-nio-8081-exec-3]           com.spark.config.CorsFilter : 过滤器被使用
+2017-12-18 21:33:25,023 INFO [http-nio-8081-exec-5]           com.spark.config.CorsFilter : 过滤器被使用
+2017-12-18 21:33:25,277 INFO [http-nio-8081-exec-6]           com.spark.config.CorsFilter : 过滤器被使用
+2017-12-18 21:33:25,376 INFO [http-nio-8081-exec-9]           com.spark.config.CorsFilter : 过滤器被使用
+2017-12-18 21:33:25,397 INFO [http-nio-8081-exec-2]           com.spark.config.CorsFilter : 过滤器被使用
+2017-12-18 21:33:25,408 WARN [http-nio-8081-exec-2] org.springframework.web.servlet.PageNotFound : No mapping found for HTTP request with URI [/favicon.ico] in DispatcherServlet with name 'dispatcherServlet'

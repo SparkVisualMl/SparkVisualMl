@@ -1,4 +1,5 @@
 package util
+
 import org.apache.spark.{SparkConf, SparkContext}
 class SparkUtil {
 

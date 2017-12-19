@@ -247,15 +247,56 @@ jsPlumb.ready(function() {
         var nodeId = args.nodeId;
         var divdom = $(nodeId);
 
-
         $("#wc_submit_btn").click(function(){
                 var fileAddress = divdom.find("#fileAddress").val();
                 var dirAddress = divdom.find("#dirAddress").val();
                 console.log("WC 文件地址"+fileAddress);
                 console.log("WC 目录地址"+dirAddress);
                 console.log("提交WC 请求");
+                var fileAddress = JSON.stringify(fileAddress);
+
+                //ajax 提交请求
+                submitByAjax({"fileAddress":fileAddress,"dirAddress":dirAddress});
         });
 
+    }
+
+    function submitByAjax(args){
+        //判断取文件还是目录
+        var fileAddress=args.fileAddress.toString();
+        fileSplits = fileAddress.split("\\")
+        console.log(fileSplits)
+        console.log(fileAddress);
+        var len = fileSplits.length
+        var pathParams = ""
+        for(var i=0;i<len;i++){
+            var str = fileSplits[i]
+            var str = str.replace(":","")
+            pathParams=pathParams+str
+            if(i<len-1){
+                pathParams=pathParams+","
+            }
+        }
+        url = "http://127.0.0.1:8080/algorithm/wordCountInFile?fileAddress="+pathParams
+        $.ajax({
+            type:"GET",
+            url:url,
+            processData:false,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            dataType:"json",
+            success:function(data) {
+                console.log(data);
+                 jQuery.each(data,function(key,values){
+                    console.log(values.name+"-------"+values.value);
+                 });
+            },
+            error:function(){
+
+            }
+        });
     }
   
     instance.doWhileSuspended(function() {

@@ -47,7 +47,9 @@ public class TestControl {
 
     @RequestMapping(value="/hello",method= RequestMethod.GET)
     public String sayHello1(@RequestParam("id") Integer id){
+        System.out.println("eeeee");
         return "id:"+id;
+
     }
     @RequestMapping(value="/hello1",method= RequestMethod.GET)
     public String sayHello(@RequestParam("id") Integer id,@RequestParam("name") String name){
