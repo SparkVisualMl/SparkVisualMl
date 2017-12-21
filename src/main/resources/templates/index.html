@@ -18,9 +18,10 @@
     *{margin:0;padding:0;}
     a{text-decoration:none;}
     a:hover{text-decoration:none;}
+    html,body{width:100%;height:100%;margin:0;padding:0;}
     ul li{list-style:none;}
 
-    .title_header{width:100%;height:60px;text-align:center;line-height:60px;color:#fff;background:#182a3c;position:relative;}
+    .title_header{width:110%;height:60px;text-align:center;line-height:60px;color:#fff;background:#182a3c;position:relative;}
     .title_header h2{margin:0;padding:0;font-size:20px;line-height:60px;}
     .title_header #navtoggle_btn{margin:-40px auto;}
     .navtoggle_btn_toggleClass{font-size:12px;}
@@ -30,17 +31,17 @@
 
 
 
-    .nav{width:100%;height:40px;text-decoration:none;background:#182a3c;color:#fff;}
+    .nav{width:110%;height:40px;text-decoration:none;background:#182a3c;color:#fff;}
     .nav ul{width:100%;height:40px;}
     .nav ul li{width:20%;float:left;text-align:center;}
     .nav ul li .outbox{width:100%;height:40px;color:#fff;text-align:center;margin:0 auto;border-right:1px solid #666;line-height:40px;font-size:14px;}
     .nav ul li:last-child .outbox{border:none;}
     .nav ul li .outbox a{color:#dfdfdf;}
     .nav ul li .outbox a:hover{text-decoration:none;color:#fff;}
-    <!--登陆注册模块 开始-->
-    .reg_log{width:100px;height:60px;background:red;position:absolute;right:10px;top:2px;}
+    /*<!--登陆注册模块 开始-->*/
+    .reg_log{width:130px;height:60px;position:absolute;right:12%;top:6px;line-height:60px;}
 
-    <!--登陆注册模块 结束-->
+    /*<!--登陆注册模块 结束-->*/
     .config_box{background:rgba(0,0,0,0.3);color:#333;with:220px;position:absolute;}
     .config_box .delete{color:red;position:absolute;right:-4px;top:-4px;font-size:24px;display:block;width:40px;height:40px;border-radius:20px;}
     .config_box ul li{width:220px;height:80px;border-bottom:1px solid #fff;}
@@ -63,9 +64,16 @@
         </a>
       </div>
       <!--登陆注册模块 开始 -->
-          <div class="reg_log">
-              <label>登陆</label><a href="#"></a>
-              <label>注册</label><a href="#"></a>
+          <div class="reg_log" >
+            <a href="#" id="login_btn">
+              <i class="layui-icon"  style="font-size: 20px; color: #1E9FFF;">登录</i>
+            </a>
+            <a>
+              <i class="layui-icon" style="font-size: 20px; color: #1E9FFF;">&#xe61b;</i>
+            </a>
+            <a href="#" id="reg_btn">
+              <i class="layui-icon" style="font-size: 20px; color: #1E9FFF;">注册</i>
+            </a>
           </div>
       <!--登陆注册模块 结束-->
 
