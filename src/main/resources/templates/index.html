@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8"/>
     <title>可视化机器学习</title>
@@ -16,49 +16,73 @@
 
     <style type="text/css">
     *{margin:0;padding:0;}
-
-    .title_header{width:100%;height:60px;text-align:center;line-height:60px;color:#fff;background:#000;}
+    a{text-decoration:none;}
+    a:hover{text-decoration:none;}
     ul li{list-style:none;}
 
-    .nav{width:100%;height:40px;text-decoration:none;background:#000;color:#fff;}
+    .title_header{width:100%;height:60px;text-align:center;line-height:60px;color:#fff;background:#182a3c;position:relative;}
+    .title_header h2{margin:0;padding:0;font-size:20px;line-height:60px;}
+    .title_header #navtoggle_btn{margin:-40px auto;}
+    .navtoggle_btn_toggleClass{font-size:12px;}
+    #regi_more{width:160px;height:30px;line-height:30px;}
+    #regi_more a{display:block;width:100%;height:100%;line-hieght:30px;text-align:center;}
+
+
+
+
+    .nav{width:100%;height:40px;text-decoration:none;background:#182a3c;color:#fff;}
     .nav ul{width:100%;height:40px;}
     .nav ul li{width:20%;float:left;text-align:center;}
-    .nav ul li .outbox{width:100%;height:40px;color:#fff;text-align:center;margin:0 auto;border-right:1px solid #333;line-height:40px;font-size:22px;}
+    .nav ul li .outbox{width:100%;height:40px;color:#fff;text-align:center;margin:0 auto;border-right:1px solid #666;line-height:40px;font-size:14px;}
     .nav ul li:last-child .outbox{border:none;}
     .nav ul li .outbox a{color:#dfdfdf;}
+    .nav ul li .outbox a:hover{text-decoration:none;color:#fff;}
+    <!--登陆注册模块 开始-->
+    .reg_log{width:100px;height:60px;background:red;position:absolute;right:10px;top:2px;}
 
-    #btnSubmit{background-color:#009688;}
-
-
+    <!--登陆注册模块 结束-->
     .config_box{background:rgba(0,0,0,0.3);color:#333;with:220px;position:absolute;}
     .config_box .delete{color:red;position:absolute;right:-4px;top:-4px;font-size:24px;display:block;width:40px;height:40px;border-radius:20px;}
     .config_box ul li{width:220px;height:80px;border-bottom:1px solid #fff;}
     .config_box ul li .config_title{display:block;width:100%;height:20px;}
     .config_box ul li input{border:none;padding-left:8px;width:200px;margin:10px auto;height:30px;}
     #wc_submit_btn{width:50px;height:40px;text-align:center;line-height:40px;background:red;color:#000;}
+
+
     </style>
   </head>
   <body>
-    <div class="title_header">VisualMl可视化机器学习</div>
+    <div class="title_header">
+      <h2>VisualMl可视化机器学习</h2>
+      <div id="navtoggle_btn" style="width:100px;height:40px;"><i class="layui-icon" style="cursor:pointer; color: #1E9FFF;">&#xe60f;</i></div>
+
+      <div id="regi_more">
+        <a th:href="@{/aigregister/}">
+          <i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe654;</i>
+          <i class="layui-icon" style="font-size: 10px; color: #1E9FFF;">算法注册</i>
+        </a>
+      </div>
+      <!--登陆注册模块 开始 -->
+          <div class="reg_log">
+              <label>登陆</label><a href="#"></a>
+              <label>注册</label><a href="#"></a>
+          </div>
+      <!--登陆注册模块 结束-->
+
+    </div>
+
     <div class="nav">
         <ul>
-          <li><div class="outbox"><a href="http://127.0.0.1:4040" target="view_window">SparkJobMonitor</a></div></li>
-          <li><div class="outbox"><a href="http://127.0.0.1:4040" target="view_window">SparkJobResult</a></div></li>
-          <li><div class="outbox"><a href="http://127.0.0.1:4040" target="view_window">SparkJobBI</a></div></li>
-          <li><div class="outbox"><a href="http://127.0.0.1:4040" target="view_window">SparkJobSystemInfo</a></div></li>
-          <li><div class="outbox"><a href="http://127.0.0.1:4040" target="view_window">SparkJobSetting</a></div></li>
+          <li><div class="outbox"><a th:href="'http://'+${ip}+':4040'" target="view_frame">Spark监控</a></div></li>
+          <li><div class="outbox"><a th:href="'http://'+${ip}+':4040'" target="view_window">Spark任务管理</a></div></li>
+          <li><div class="outbox"><a th:href="'http://'+${ip}+':4040'" target="view_window">Spark结果展示BI</a></div></li>
+          <li><div class="outbox"><a th:href="'http://'+${ip}+':4040'" target="view_window">Spark系统信息</a></div></li>
+          <li><div class="outbox"><a th:href="'http://'+${ip}+':4040'" target="view_window">Spark配置参数</a></div></li>
         </ul>
 
     </div>
 
-    <form method="POST" enctype="multipart/form-data" id="fileUploadForm">
-      <!--<input type="text" name="extraField"/>-->
-      <input type="file" class="layui-btn" name="files"/>
-      <!--<input type="submit" value="提交" id="btnSubmit"/>-->
-      <button type="button" class="layui-btn" id="btnSubmit">
-        <i class="layui-icon"></i>上传
-      </button>
-    </form>
+
     <div class="flow-fluid">
       <div class="row">
         <div class="col-md-2">
@@ -98,10 +122,11 @@
     <script type="text/javascript" src="/static/libs/biltong-0.2.js"></script>
     <script type="text/javascript" src="/static/libs/jsBezier-0.6.js"></script>
     <script type="text/javascript" src="/static/libs/main.js"></script>
+    <script type="text/javascript" src="/static/libs/animate-spark.js"></script>
     <script src="/static/libs/layui/layui.all.js"></script>
     <script type='text/javascript'>
 
- $(document).ready(function () {
+      $(document).ready(function () {
 
       $("#btnSubmit").click(function (event) {
 
@@ -111,6 +136,11 @@
         fire_ajax_submit();
 
       });
+
+
+
+
+
 
 });
 

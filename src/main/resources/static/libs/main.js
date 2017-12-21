@@ -280,7 +280,7 @@ jsPlumb.ready(function() {
                 pathParams=pathParams+","
             }
         }
-        url = "http://127.0.0.1:8080/algorithm/wordCountInFile?fileAddress="+pathParams
+        url = "http://127.0.0.1:8081/algorithm/wordCountInFile?fileAddress="+pathParams
         $.ajax({
             type:"GET",
             url:url,
@@ -319,15 +319,10 @@ jsPlumb.ready(function() {
       addPorts(instance, node2, ['in','in1','in2'],'input');
 
       connectPorts(instance, node1, 'out2', node2, 'in2');
-
       instance.draggable($('.node'));
-
     });
 
     jsPlumb.fire("jsFlowLoaded", instance);
-
-
-
     function connectCallBack(args){
           var instance = args.instance;
           //自己连接自己事件
@@ -338,9 +333,9 @@ jsPlumb.ready(function() {
 
               if (connInfo.connection.sourceId == connInfo.connection.targetId) {
                   jsPlumb.detach(connInfo);
-                  alert("不能连接自己！");
+                  console.log("不能连接自己！");
               }else{
-                 alert("连接"+connInfo.connection.sourceId+"==="+connInfo.connection.targetId);
+                 console.log("连接"+connInfo.connection.sourceId+"==="+connInfo.connection.targetId);
               }
            });
 
@@ -354,7 +349,7 @@ jsPlumb.ready(function() {
                          if (conn.sourceId == conn.targetId) {
                              //自己连接自己时会自动取消连接
                          }else{
-                                 alert("删除连接从" + conn.sourceId + "到" + conn.targetId + "！");
+                                 console.log("删除连接从" + conn.sourceId + "到" + conn.targetId + "！");
                          }
               });
      }
