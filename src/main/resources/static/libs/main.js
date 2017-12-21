@@ -141,7 +141,9 @@ jsPlumb.ready(function() {
       EndpointHoverStyle : {fillStyle:"#7073EB" },
       Container:"flow-panel"//拖拽空间容器
     });
-
+    connectCallBack({"instance":instance});
+    connectCancelCallBack({"instance":instance});
+    connectClick({"instance":instance});
     //Initialize Control Tree View
     $('#control-panel').treeview({data: getTreeData()});
 
@@ -172,6 +174,7 @@ jsPlumb.ready(function() {
 
       var node = addNode('flow-panel','node' + uid, nodeName, {x:mx,y:my});
 
+
       //给添加节点赋右键点击事件，先屏蔽右键，再给右键赋点击事件
       $("#node" + uid).bind("contextmenu", function(){
           return false;
@@ -187,7 +190,7 @@ jsPlumb.ready(function() {
               rightBtnConfig({"nodeName":nodeName,"event":e,"nodeId":"#node" + uid});
           }
       })
-      addPorts(instance, node, ['out'],'output');
+      addPorts(instance, node, ['out','out1','out2'],'output');
       addPorts(instance, node, ['in1','in2'],'input');
       instance.draggable($(node));
     }).on('dragover', function(ev){
@@ -312,15 +315,63 @@ jsPlumb.ready(function() {
       var node1 = addNode('flow-panel','HDFS', 'HDFS', {x:'10px',y:'10px'});
       var node2 = addNode('flow-panel','MySQL', 'MySQL', {x:'80px',y:'80px'});
 
-      addPorts(instance, node1, ['out1','out2'],'output');
+      addPorts(instance, node1, ['out1','out2','out3'],'output');
       addPorts(instance, node2, ['in','in1','in2'],'input');
 
-      connectPorts(instance, node1, 'out2', node2, 'in');
+      connectPorts(instance, node1, 'out2', node2, 'in2');
 
       instance.draggable($('.node'));
-  
+
     });
 
     jsPlumb.fire("jsFlowLoaded", instance);
+
+
+
+    function connectCallBack(args){
+          var instance = args.instance;
+          //自己连接自己事件
+          console.log("自己连接自己事件");
+          conn = instance.getAllConnections();
+          console.log(conn);
+          instance.bind("connection", function (connInfo, originalEvent) {
+
+              if (connInfo.connection.sourceId == connInfo.connection.targetId) {
+                  jsPlumb.detach(connInfo);
+                  alert("不能连接自己！");
+              }else{
+                 alert("连接"+connInfo.connection.sourceId+"==="+connInfo.connection.targetId);
+              }
+           });
+
+     }
+
+    function connectCancelCallBack(args){
+             //连接取消事件
+             var instance = args.instance;
+
+             instance.bind("connectionDetached", function (conn, originalEvent) {
+                         if (conn.sourceId == conn.targetId) {
+                             //自己连接自己时会自动取消连接
+                         }else{
+                                 alert("删除连接从" + conn.sourceId + "到" + conn.targetId + "！");
+                         }
+              });
+     }
+
+     function connectClick(args){
+        var instance = args.instance;
+
+        instance.bind("click", function (conn, originalEvent) {
+            if (confirm("Delete connection from " + conn.sourceId + " to " + conn.targetId + "?"))
+                instance.detach(conn);
+        });
+
+     }
+     //移除所有的连接
+     function removeConnection(args){
+        args.instance.removeAllEndpoints("window");
+     }
+
     
 });
