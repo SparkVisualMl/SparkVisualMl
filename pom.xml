@@ -15,14 +15,7 @@
     </parent>
 
     <repositories>
-        <!--<repository>-->
-            <!--<id>CN</id>-->
-            <!--<url>http://maven.oschina.net/content/groups/public/</url>-->
-        <!--</repository>-->
-        <!--<repository>-->
-            <!--<id>jboss-public-repository-group</id>-->
-            <!--<url>http://repository.jboss.org/nexus/content/groups/public</url>-->
-        <!--</repository>-->
+
         <repository>
             <id>aliyunmaven</id>
             <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
@@ -88,6 +81,12 @@
         </dependency>
 
 
+        <!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-hdfs -->
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-hdfs</artifactId>
+            <version>2.6.0</version>
+        </dependency>
 
         <!-- spark核心的依赖 -->
         <dependency>
@@ -228,24 +227,8 @@
             <artifactId>spring-context-support</artifactId>
         </dependency>
         <!--定时任务依赖-->
-        <!-- https://mvnrepository.com/artifact/com.hynnet/oracle-driver-ojdbc6 -->
-        <dependency>
-            <groupId>com.hynnet</groupId>
-            <artifactId>oracle-driver-ojdbc6</artifactId>
-            <version>12.1.0.1</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.lucee/xdb -->
-        <dependency>
-            <groupId>org.lucee</groupId>
-            <artifactId>xdb</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/oracle/xmlparser -->
-        <!--<dependency>-->
-            <!--<groupId>oracle</groupId>-->
-            <!--<artifactId>xmlparser</artifactId>-->
-            <!--<version>2.0</version>-->
-        <!--</dependency>-->
+
+
 
 
 
