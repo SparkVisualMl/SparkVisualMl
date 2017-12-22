@@ -7,6 +7,7 @@ spring:
     prefix:  classpath:/templates/
     suffix:  .html
     check-template: false
+    cache-period: 0
     cache: false
   #具体可以配置的参数可以查看 org.springframework.boot.autoconfigure.thymeleaf.ThymeleafProperties这个类,上面的配置实际上就是注入到该类中的属性值.
 ---

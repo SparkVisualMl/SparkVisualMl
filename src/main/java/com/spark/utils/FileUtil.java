@@ -59,18 +59,18 @@ public class FileUtil {
                 logger.warn("mainHome is"+ mainHome);
 
                 File fileMake = new File(mainHome+"/"+uploadJarDir+"/"+file.getOriginalFilename());
-                System.out.println(fileMake);
-                System.out.println(mainHome);
+
                 if(!fileMake.exists()){
                     boolean isSuccess = createFile(mainHome+"/"+uploadJarDir+"/"+file.getOriginalFilename());
 
                     uploadPath = fileMake.toString();
+                    FileOutputStream fout = new FileOutputStream(fileMake);
+                    fout.write(bytes);
+                }else {
+                    logger.warn("文件已经存在");
                 }
-                FileOutputStream fout = new FileOutputStream(fileMake);
-                fout.write(bytes);
-            }catch (IOException e){
 
-                logger.error(e.getMessage());
+            }catch (IOException e){
                 logger.error(e.getMessage());
             }catch (ConfigurationException e1){
                 logger.error(e1.getMessage());

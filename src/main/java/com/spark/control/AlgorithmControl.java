@@ -37,6 +37,13 @@ public class AlgorithmControl {
         //跳转到 templates 目录下的aigregister.html
         return "aigregister";
     }
+
+
+    @RequestMapping(value="/datamanager", method = RequestMethod.GET)
+    public String datamanager() {
+        //跳转到 templates 目录下的test.html
+        return "datamanager";
+    }
     @RequestMapping(value="/test", method = RequestMethod.GET)
     public String test() {
         //跳转到 templates 目录下的test.html
