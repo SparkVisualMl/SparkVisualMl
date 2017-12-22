@@ -35,7 +35,9 @@
     .nav ul{width:100%;height:40px;}
     .nav ul li{width:20%;float:left;text-align:center;}
     .nav ul li .outbox{width:100%;height:40px;color:#fff;text-align:center;margin:0 auto;border-right:1px solid #666;line-height:40px;font-size:14px;}
+
     .nav ul li:last-child .outbox{border:none;}
+    .nav ul li:first-child .outbox{border-left:1px solid #666;}
     .nav ul li .outbox a{color:#dfdfdf;}
     .nav ul li .outbox a:hover{text-decoration:none;color:#fff;}
     /*<!--登陆注册模块 开始-->*/
@@ -80,12 +82,13 @@
     </div>
 
     <div class="nav">
-        <ul>
-          <li><div class="outbox"><a th:href="'http://'+${ip}+':4040'" target="view_frame">Spark监控</a></div></li>
-          <li><div class="outbox"><a th:href="'http://'+${ip}+':4040'" target="view_window">Spark任务管理</a></div></li>
-          <li><div class="outbox"><a th:href="'http://'+${ip}+':4040'" target="view_window">Spark结果展示BI</a></div></li>
-          <li><div class="outbox"><a th:href="'http://'+${ip}+':4040'" target="view_window">Spark系统信息</a></div></li>
-          <li><div class="outbox"><a th:href="'http://'+${ip}+':4040'" target="view_window">Spark配置参数</a></div></li>
+        <ul class="layui-nav" lay-filter="">
+          <li><div class="outbox layui-nav-item layui-this"><a th:href="'http://'+${ip}+':4040'" target="view_frame">首页</a></div></li>
+
+          <li><div class="outbox layui-nav-item"><a th:href="'http://'+${ip}+':4040'" target="view_frame">Spark监控</a></div></li>
+          <li><div class="outbox layui-nav-item"><a th:href="'http://'+${ip}+':4040'" target="view_window">Spark任务管理</a></div></li>
+          <li><div class="outbox layui-nav-item"><a th:href="'http://'+${ip}+':4040'" target="view_window">Spark系统信息</a></div></li>
+          <li><div class="outbox layui-nav-item"><a th:href="'http://'+${ip}+':4040'" target="view_window">Spark配置参数</a></div></li>
         </ul>
 
     </div>
