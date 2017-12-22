@@ -15,10 +15,19 @@
     </parent>
 
     <repositories>
+        <!--<repository>-->
+            <!--<id>CN</id>-->
+            <!--<url>http://maven.oschina.net/content/groups/public/</url>-->
+        <!--</repository>-->
+        <!--<repository>-->
+            <!--<id>jboss-public-repository-group</id>-->
+            <!--<url>http://repository.jboss.org/nexus/content/groups/public</url>-->
+        <!--</repository>-->
         <repository>
             <id>aliyunmaven</id>
             <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
         </repository>
+
     </repositories>
 
     <properties>
@@ -46,13 +55,20 @@
             <scope>test</scope>
         </dependency>
 
-        <!--mysql数据库驱动依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.36</version>
+            <scope>runtime</scope>
         </dependency>
-
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.0.29</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -64,10 +80,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-log4j</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -82,9 +95,7 @@
             <artifactId>${spark.core.version}</artifactId>
             <version>${spark.version}</version>
             <exclusions>
-
                 <exclusion>
-
                     <groupId>com.google.guava</groupId>
                     <artifactId>guava</artifactId>
                 </exclusion>
@@ -123,7 +134,8 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
-            <optional>true</optional><!-- optional=true,依赖不会传递，该项目依赖devtools；之后依赖myboot项目的项目如果想要使用devtools，需要重新引入 -->
+            <optional>true</optional>
+        <!-- optional=true,依赖不会传递，该项目依赖devtools；之后依赖myboot项目的项目如果想要使用devtools，需要重新引入 -->
         </dependency>
         <!--解决 问题 java.lang.ClassNotFoundException: org.codehaus.commons.compiler.UncheckedCompileException-->
         <dependency>
@@ -183,10 +195,10 @@
             <version>1.2.2</version>
         </dependency>
         <!--集成持久层框架,mybatis,考虑用jpa替换 内存泄漏问题没有解决-->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-data-jpa</artifactId>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.hive</groupId>
@@ -203,6 +215,43 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <!--定时任务依赖-->
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+        </dependency>
+        <!--Spring Boot 整合 Quartz-->
+        <!--Spring 项目整合 Quartz 主要依靠添加 SchedulerFactoryBean 这个 FactoryBean ，所以在maven 依赖中添加 spring-context-support 。-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+        </dependency>
+        <!--定时任务依赖-->
+        <!-- https://mvnrepository.com/artifact/com.hynnet/oracle-driver-ojdbc6 -->
+        <dependency>
+            <groupId>com.hynnet</groupId>
+            <artifactId>oracle-driver-ojdbc6</artifactId>
+            <version>12.1.0.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.lucee/xdb -->
+        <dependency>
+            <groupId>org.lucee</groupId>
+            <artifactId>xdb</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/oracle/xmlparser -->
+        <!--<dependency>-->
+            <!--<groupId>oracle</groupId>-->
+            <!--<artifactId>xmlparser</artifactId>-->
+            <!--<version>2.0</version>-->
+        <!--</dependency>-->
+
+
+
+
+
+
 
     </dependencies>
 

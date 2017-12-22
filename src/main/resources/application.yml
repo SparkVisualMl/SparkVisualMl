@@ -8,6 +8,17 @@ spring:
     suffix:  .html
     check-template: false
     cache: false
-  # 数据库连接池
+  #具体可以配置的参数可以查看 org.springframework.boot.autoconfigure.thymeleaf.ThymeleafProperties这个类,上面的配置实际上就是注入到该类中的属性值.
+---
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url:  jdbc:mysql://120.76.245.1:3306/test?useSSL=true&verifyServerCertificate=false&useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
+    username: root
+    password: ""
+---
+jpa:
+      hibernate:
+            dd1-auto:  update
 
 
