@@ -14,7 +14,7 @@ public class CommonConfig {
     @Bean
     public MultipartConfigElement multipartConfigElement() {
         MultipartConfigFactory factory = new MultipartConfigFactory();
-        factory.setMaxFileSize(1024L * 10240L);
+        factory.setMaxFileSize(1048576000L);
         return factory.createMultipartConfig();
     }
 }
