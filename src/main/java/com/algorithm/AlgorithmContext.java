@@ -1,0 +1,1 @@
+package com.algorithm;/** * 算法上下文的抽象类 */public abstract class AlgorithmContext {}

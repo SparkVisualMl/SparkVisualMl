@@ -104,7 +104,7 @@
 
     <div class="flow-fluid">
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-2" style="width:240px;">
           <div class="panel panel-default" style="height:100%;">
             <div class="panel-body">
               <div id="control-panel">
@@ -203,7 +203,16 @@ function fire_ajax_submit() {
     });
 
 }
+layui.use('form', function(){
+  var form = layui.form;
+  //监听提交
+  form.on('submit(formSubmit)', function(data){
+    alert(JSON.stringify(data.field));
+    alert(444);
+//    layer.msg(JSON.stringify(data.field));
 
+  });
+});
     </script>
 
   </body>
