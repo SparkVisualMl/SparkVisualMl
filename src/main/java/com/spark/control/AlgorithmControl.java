@@ -50,6 +50,12 @@ public class AlgorithmControl {
         return "aigregister";
     }
 
+    @RequestMapping(value="/jsplumb", method = RequestMethod.GET)
+    public String jsplumb() {
+        //跳转到 templates 目录下的test.html
+        return "jsplumbtest";
+    }
+
 
 
 }
