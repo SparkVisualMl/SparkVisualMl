@@ -32,6 +32,19 @@
             opacity: 0;
         }
         .file:hover{text-decoration: none;color:#fff;}
+
+
+
+
+        #pat{width:200px;height: 20px;
+            border-radius: 5px;
+            background-color: #ccc;
+            margin: 10px}
+        #son{width: 0;height: 100%;
+            background: #9cf;
+            text-align: center;
+            border-radius: 5px}
+
     </style>
 </head>
 <body>
@@ -56,7 +69,7 @@
                 <form method="POST" enctype="multipart/form-data" id="fileHdfsUploadForm">
                     <!--<input type="text" name="extraField"/>-->
                     <a href="javascript:;" class="file">
-                        <input type="file" class="layui-btn" id="fileupload" name="files"/>
+                        <input type="file" class="layui-btn" name="files"/>
                         <span>点击上传文件</span>
                     </a><br/>
                     <!--<input type="submit" value="提交" id="btnSubmit"/>-->
@@ -65,11 +78,28 @@
                     </button>
                 </form>
 
+
                 <!--数据上传-->
 
 
             </div>
-            <div class="layui-tab-item">内容2</div>
+            <div class="layui-tab-item">
+
+                <form enctype="multipart/form-data" id="progresId">
+                    用户名:<input type="text" name="user" /><br/>
+                    密码:<input type="password" name="pass" /><br/>
+                    头像:<input type="file" name="file" /><br/>
+                    <input type="submit" value="提交" name="sub" />
+                </form>
+                <div id="showResult" style="display: none">
+                    <p>ajax无刷新界面返回结果：</p>
+                    用户名：<input type="text" id="user" disabled="disabled" /><br/>
+                    密码：<input type="text" id="pass" disabled="disabled" /><br/>
+                    头像：<img src="" id="face" style="width:200px;height:200px" />
+                    <div id="pat"><div id="son"></div></div>
+                </div>
+
+            </div>
             <div class="layui-tab-item">内容3</div>
             <div class="layui-tab-item">内容4</div>
             <div class="layui-tab-item">内容5</div>
@@ -89,44 +119,78 @@
 <![endif]-->
 <script type="text/javascript" src="/static/libs/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="/static/libs/jquery-ui-1.9.2.min.js"></script>
-<!--上传进度条依赖-->
-<!--<script type="text/javascript" src="/static/libs/jquery.fileupload.js"></script>-->
-<!--<script type="text/javascript" src="/static/libs/jquery.iframe-transport.js"></script>-->
-<!--<script type="text/javascript" src="/static/libs/jquery.ui.widget.js"></script>-->
-
 <script src="/static/libs/layui/layui.all.js"></script>
-<script type="text/javascript">
+    <script type="text/javascript">
+        var fm=document.getElementById('progresId');
+        fm.onsubmit=function () {
+            //实例化 FormData对象，同时收集表单的信息，包括普通表单域和文件表单域的信息
+            var fd=new FormData(fm);
+            var xhr=new XMLHttpRequest();
+            xhr.onreadystatechange=function () {
+                if(xhr.readyState==4){
+                    eval("var info="+xhr.responseText); //将json信息转化成js对象
+                    var result=document.getElementById("showResult"),
+                        user=document.getElementById("user"),
+                        pass=document.getElementById("pass"),
+                        face=document.getElementById("face");
+                    console.log(user);
+                    console.log(pass);
+                    result.style.display='block';
+                    user.value=info.user;
+                    pass.value=info.pass;
+                    face.setAttribute("src",info.face);
+                }
+            };
+            xhr.upload.onprogress=function (evt) {   //事件监听器，获取上传的情况
+                var loaded=evt.loaded;  //已上传的大小
+
+                total=evt.total; //总大小
+                console.log(total);
+                per=Math.floor((loaded/total)*100)+'%'; //转换成百分比
+                <!--son=document.getElementById("son");-->
+                <!--son.innerHTML=per;-->
+                <!--son.style.width=per;-->
+            }
+            xhr.open('GET','/utils/uploadtest');
+            xhr.send(fd);   //发送数据
+            console.log("发送数据");
+            return false;   //阻止页面提交
+        }
+</script>
+
+
+    <script type="text/javascript">
     //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
     layui.use('element', function(){
       var element = layui.element;
 
       //…
     });
-$(function(){
-     <!--$('#fileupload').fileupload({-->
 
-                <!--dataType: 'json',-->
-                <!--progressall: function (e, data) {-->
-                    <!--var progress = parseInt(data.loaded / data.total * 100, 10);-->
-                <!--},-->
-
-                <!--done: function(e, data) {-->
-                <!--}-->
-     <!--});-->
-});
 $(document).ready(function () {
 
       $("#hdfsUpBtnSubmit").click(function (event) {
 
         //stop submit the form, we will post it manually.
-        event.preventDefault();
+        <!--event.preventDefault();-->
 
-        fire_ajax_submit();
+        <!--fire_ajax_submit();-->
+        console.log("start");
+        uploadWithProgress();
 
-      });
+       });
+
+
+
+
+
+
+
+
 });
 
 function fire_ajax_submit() {
+
     // Get form
     var form = $('#fileHdfsUploadForm')[0];
 
@@ -135,12 +199,7 @@ function fire_ajax_submit() {
     data.append("CustomField", "This is some extra data, testing");
 
     $("#hdfsUpBtnSubmit").prop("disabled", true);
-    //加载层
-    var index = layer.load(0, {shade: false}); //0代表加载的风格，支持0-2
-    //loading层
-    var index = layer.load(1, {
-      shade: [0.6,'#333'] //0.1透明度的白色背景
-    });
+
     $.ajax({
         type: "POST",
         enctype: 'multipart/form-data',
@@ -153,14 +212,50 @@ function fire_ajax_submit() {
         cache: false,
         timeout: 600000,
         success: function (data) {
+
             console.log("SUCCESS : ", data);
-            layer.closeAll('loading');
+            $("#hdfsUpBtnSubmit").prop("disabled", false);
+
         },
         error: function (e) {
+
             console.log("ERROR : ", e);
-            layer.closeAll('loading');
+            $("#hdfsUpBtnSubmit").prop("disabled", false);
+
         }
     });
+
+}
+
+function uploadWithProgress(){
+        var fm=document.getElementById('fileHdfsUploadForm');
+        console.log("uploadWithProgress");
+        fm.onsubmit=function () {
+            //实例化 FormData对象，同时收集表单的信息，包括普通表单域和文件表单域的信息
+            console.log("实例化 FormData对象，同时收集表单的信息，包括普通表单域和文件表单域的信息");
+            var fd=new FormData(fm);
+            var xhr=new XMLHttpRequest();
+            xhr.onreadystatechange=function () {
+                if(xhr.readyState==4){
+                    eval("var info="+xhr.responseText); //将json信息转化成js对象
+                    console.log(info);
+                }
+            };
+            xhr.upload.onprogress=function (evt) {   //事件监听器，获取上传的情况
+                var loaded=evt.loaded,  //已上传的大小
+                    total=evt.total,  //总大小
+                    per=Math.floor((loaded/total)*100)+'%', //转换成百分比
+                    son=document.getElementById("son");
+                son.innerHTML=per;
+                son.style.width=per;
+            }
+            xhr.open('post','/utils/uploadjar');
+            xhr.send(fd);   //发送数据
+            console.log("发送数据");
+            return false;   //阻止页面提交
+        }
+        console.log("end end");
+
 
 }
 
