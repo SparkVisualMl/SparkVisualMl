@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/libs/layui/css/layui.css" />
+
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"/>
+</head>
+<body>
+    <div id="btn_linetype" class="divMenuBtn btn-default btn">
+        连线类型：
+        　　<select id="sel_linetype" style="width:80px;height:20px">
+        　　　　<option value="2">直线</option>
+        　　　　<option value="1">折线</option>
+        　　　　<option value="3">曲线</option>
+        　　</select>
+    </div>
+
+
+
+    <div id="divCenter"></div>
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="/static/libs/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/static/libs/jquery-ui-1.9.2.min.js"></script>
+<script type="text/javascript" src="/static/libs/d3.min.js"></script>
+<script type="text/javascript" src="/static/libs/bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/libs/bootstrap-treeview.min.js"></script>
+<script type="text/javascript" src="/static/libs/json2.js"></script>
+<script type="text/javascript" src="/static/libs/jquery.jsPlumb-1.7.2.js"></script>
+<script type="text/javascript">
+    //基本连接线样式
+    var connectorPaintStyle = {
+      strokeStyle: "#1e8151",
+      fillStyle: "transparent",
+      radius: 5,
+      lineWidth: 2
+    };
+    // 鼠标悬浮在连接线上的样式
+    var connectorHoverStyle = {
+      lineWidth: 3,
+      strokeStyle: "#216477",
+      outlineWidth: 2,
+      outlineColor: "white"
+    };
+    var endpointHoverStyle = {
+      fillStyle: "#216477",
+      strokeStyle: "#216477"
+    };
+    //空心圆端点样式设置
+    var hollowCircle = {
+      DragOptions: { cursor: 'pointer', zIndex: 2000 },
+      endpoint: ["Dot", { radius: 7 }], //端点的形状
+      connectorStyle: connectorPaintStyle,//连接线的颜色，大小样式
+      connectorHoverStyle: connectorHoverStyle,
+      paintStyle: {
+        strokeStyle: "#1e8151",
+        fillStyle: "transparent",
+        radius: 5,
+        lineWidth: 2
+      },    //端点的颜色样式
+      //anchor: "AutoDefault",
+      isSource: true,  //是否可以拖动（作为连线起点）
+      connector: ["Straight", { stub: [0, 0], gap: 10, cornerRadius: 5, alwaysRespectStubs: true }], //连接线的样式种类有[Bezier],[Flowchart],[StateMachine ],[Straight ]
+      isTarget: true,  //是否可以放置（连线终点）
+      maxConnections: -1,  // 设置连接点最多可以连接几条线
+      connectorOverlays: [["Arrow", { width: 10, length: 10, location: 1 }]]
+    };
+
+
+　   //全局的空心圆端点样式设置
+var hollowCircle = {
+  DragOptions: { cursor: 'pointer', zIndex: 2000 },
+  endpoint: ["Dot", { radius: 7 }], //端点的形状
+  connectorStyle: connectorPaintStyle,//连接线的颜色，大小样式
+  connectorHoverStyle: connectorHoverStyle,
+  paintStyle: {
+    strokeStyle: "#1e8151",
+    fillStyle: "transparent",
+    radius: 5,
+    lineWidth: 2
+  },    //端点的颜色样式
+  //anchor: "AutoDefault",
+  isSource: true,  //是否可以拖动（作为连线起点）
+  connector: ["Straight", { stub: [0, 0], gap: 10, cornerRadius: 5, alwaysRespectStubs: true }], //连接线的样式种类有[Bezier],[Flowchart],[StateMachine ],[Straight ]
+  isTarget: true,  //是否可以放置（连线终点）
+  maxConnections: -1,  // 设置连接点最多可以连接几条线
+  connectorOverlays: [["Arrow", { width: 10, length: 10, location: 1 }]]
+};
+
+//页面初始化完成之后
+$(function () {
+  //连线样式下拉框的change事件
+  $("#sel_linetype").change(function () {
+    var strlinetype = "";
+    var strlinecolor = "";
+    //设置新添加元素的节点的连线样式
+    //直线的样式和样色
+    if ($(this).val() == "1") {
+      strlinetype = "Flowchart";
+      strlinecolor = "red";
+      hollowCircle.connector = ["Flowchart", { stub: [0, 0], gap: 10, cornerRadius: 5, alwaysRespectStubs: true }];
+    }
+    //折线的样式和颜色
+    else if ($(this).val() == "2") {
+      strlinetype = "Straight";
+      strlinecolor = "green";
+      hollowCircle.connector = ["Straight", { stub: [0, 0], gap: 10, cornerRadius: 5, alwaysRespectStubs: true }];
+    }
+    //曲线的样式和颜色
+    else if ($(this).val() == "3") {
+      strlinetype = "Bezier";
+      strlinecolor = "orange";
+      hollowCircle.connector = ["Bezier", { stub: [0, 0], gap: 10, cornerRadius: 5, alwaysRespectStubs: true }];
+    }
+    //设置已经存在的所有的连接点的连线样式
+    var arrnode = $("#divCenter").find(".node");
+    <!--for (var i = 0; i < arrnode.length; i++) {-->
+      <!--var arrendpoints = jsPlumb.getEndpoints($(arrnode[i]).attr("id"));-->
+      <!--if (arrendpoints == undefined || arrendpoints == null) {-->
+        <!--return;-->
+      <!--}-->
+      <!--var oconnector = arrendpoints[0].connector;-->
+      <!--if (oconnector == null || oconnector == undefined) {-->
+        <!--return;-->
+      <!--}-->
+      <!--oconnector[0] = strlinetype;-->
+      <!--var oconnectstyle = arrendpoints[0].connectorStyle;-->
+      <!--if (oconnectstyle == null || oconnectstyle == undefined) {-->
+        <!--return;-->
+      <!--}-->
+      <!--oconnectstyle.strokeStyle = strlinecolor;-->
+    <!--}-->
+  });
+});
+
+$(function () {
+  var oRegionSelect = new RegionSelect({
+    region: '#divCenter div.node',
+    selectedClass: 'seled',
+    parentId: "divCenter"
+  });
+  oRegionSelect.select();
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _selectedRegions = [];
+//var selProp;
+
+function RegionSelect(selRegionProp) {
+  //selProp = selRegionProp;
+  this.regions = [];
+  this.selProp = selRegionProp;
+  this.InitRegions(selRegionProp);
+  this.selectedClass = selRegionProp["selectedClass"];
+  this.selectedRegion = [];
+  this.selectDiv = null;
+  this.startX = null;
+  this.startY = null;
+  this.parentId = selRegionProp["parentId"];
+}
+
+RegionSelect.prototype.InitRegions = function () {
+  var _self = this;
+  _self.regions = [];
+  var _regions = document.getElementsBySelector(_self.selProp["region"]);//$("#divCenter > .node");//
+
+  var bSelect = true;
+  <!--if (_regions && _regions.length > 0) {-->
+    <!--for (var i = 0; i < _regions.length; i++) {-->
+      <!--_regions[i].onmousedown = function () {-->
+        <!--bSelect = false;-->
+        <!--var evt = window.event || arguments[0];-->
+        <!--if (!evt.shiftKey && !evt.ctrlKey) {-->
+          <!--if ($.inArray(this, _selectedRegions) === -1) {-->
+            <!--// 清空所有select样式-->
+            <!--_self.clearSelections(_regions);-->
+            <!--this.className += " " + _self.selectedClass;-->
+            <!--// 清空selected数组，并加入当前select中的元素-->
+            <!--_selectedRegions = [];-->
+            <!--_selectedRegions.push(this);-->
+          <!--}-->
+        <!--} else {-->
+          <!--if (this.className.indexOf(_self.selectedClass) == -1) {-->
+            <!--this.className += " " + _self.selectedClass;-->
+            <!--_selectedRegions.push(this);-->
+          <!--} else {-->
+            <!--this.className = this.className.replaceAll(_self.selectedClass, "");-->
+            <!--_selectedRegions.remove(this);-->
+          <!--}-->
+        <!--}-->
+        <!--clearEventBubble(evt);-->
+      <!--}-->
+      <!--this.regions.push(_regions[i]);-->
+    <!--}-->
+  <!--}-->
+
+  if (bSelect) {
+    // 清空所有select样式
+    _self.clearSelections(_regions);
+    // 清空selected数组，并加入当前select中的元素
+    _selectedRegions = [];
+  }
+}
+
+RegionSelect.prototype.select = function () {
+  var _self = this;
+  var sDivId = _self.parentId;
+  var intMousePosition = [0, 0];
+  var intOriginalPosition = [0, 0];
+  var parentWidth = parseInt(document.getElementById(sDivId).parentElement.offsetWidth);
+  var parentHeight = parseInt(document.getElementById(sDivId).parentElement.offsetHeight);
+  addEvent("mousedown", function () {
+    var evt = window.event || arguments[0];
+    var buttonType = evt.buttons || evt.button;
+    if (evt.target != undefined) {
+      if (evt.target.id !== sDivId) return;
+    }
+    if (evt.srcElement != undefined) {
+      if (evt.srcElement.id !== sDivId) return;
+    }
+    if (evt.buttons == undefined && buttonType == 0){
+      _self.onBeforeSelect(evt, sDivId);
+    }
+    if (buttonType === 1) {
+      _self.onBeforeSelect(evt, sDivId);
+    }
+    if (buttonType === 2) {
+      intMousePosition = [evt.clientX, evt.clientY];
+      var movX = parseInt(GetStyle(document.getElementById(sDivId), "left"));
+      var movY = parseInt(GetStyle(document.getElementById(sDivId), "top"));
+      intOriginalPosition = [movX, movY];
+      document.getElementById(sDivId).style.cursor = "move";
+    }
+    clearEventBubble(evt);
+  }, document);
+
+  addEvent("mousemove", function () {
+    var evt = window.event || arguments[0];
+    //if (evt.target.id !== sDivId) return;
+    var buttonType = evt.buttons || evt.button;
+    if (evt.buttons == undefined && buttonType == 0) {
+      _self.onSelect(evt, sDivId);
+    }
+    if (buttonType === 1) {
+      _self.onSelect(evt, sDivId);
+    }
+    if (buttonType === 2) {
+      var newX = intOriginalPosition[0] + evt.clientX - intMousePosition[0];
+      var newY = intOriginalPosition[1] + evt.clientY - intMousePosition[1];
+      if (newX >= 0) {
+        newX = 0;
+      }
+      if (newY >= 0) {
+        newY = 0;
+      }
+      $("#" + sDivId).css("left", newX + "px");
+      $("#" + sDivId).css("top", newY + "px");
+      $("#" + sDivId).css("width", (parentWidth-newX) + "px");
+      $("#" + sDivId).css("height", (parentHeight-newY) + "px");
+
+    }
+    clearEventBubble(evt);
+  }, document);
+
+  addEvent("mouseup", function () {
+    var evt = window.event || arguments[0];
+    var buttonType = evt.buttons || evt.button;
+    if (evt.buttons == undefined && buttonType == 0) {
+    }
+    if (buttonType === 1) {
+    }
+      document.getElementById(sDivId).style.cursor = "default";
+      _self.onEnd();
+  }, document);
+}
+
+RegionSelect.prototype.onBeforeSelect = function (evt, sDivId) {
+  // 创建模拟 选择框
+  var _self = this;
+  _self.InitRegions(_self.selProp);
+  if (!document.getElementById("selContainer")) {
+    this.selectDiv = document.createElement("div");
+    this.selectDiv.style.cssText = "position:absolute;width:0px;height:0px;font-size:0px;margin:0px;padding:0px;border:1px dashed #0099FF;background-color:#C3D5ED;z-index:1000;filter:alpha(opacity:60);opacity:0.6;display:none;";
+    this.selectDiv.id = "selContainer";
+    document.getElementById(sDivId).appendChild(this.selectDiv);
+  } else {
+    this.selectDiv = document.getElementById("selContainer");
+  }
+
+  this.startX = posXY(evt, sDivId).x;
+  this.startY = posXY(evt, sDivId).y;
+  this.isSelect = true;
+
+}
+
+RegionSelect.prototype.onSelect = function (evt, sDivId) {
+  var self = this;
+  if (self.isSelect) {
+    if (self.selectDiv.style.display == "none") self.selectDiv.style.display = "";
+
+    var posX = posXY(evt, sDivId).x;
+    var poxY = posXY(evt, sDivId).y;
+    self.selectDiv.style.left = Math.min(posX, this.startX) + "px";
+    self.selectDiv.style.top = Math.min(poxY, this.startY) + "px";
+    self.selectDiv.style.width = Math.abs(posX - this.startX) + "px";
+    self.selectDiv.style.height = Math.abs(poxY - this.startY) + "px";
+
+    var regionList = self.regions;
+    for (var i = 0; i < regionList.length; i++) {
+      if (self.selectDiv.parentNode.id !== regionList[i].parentNode.id) continue;
+      var r = regionList[i], sr = self.innerRegion(self.selectDiv, r);
+      if (sr && r.className.indexOf(self.selectedClass) == -1) {
+        r.className = r.className + " " + self.selectedClass;
+        _selectedRegions.push(r);
+      } else if (!sr && r.className.indexOf(self.selectedClass) != -1) {
+        r.className = r.className.replaceAll(self.selectedClass, "");
+        _selectedRegions.remove(r);
+      }
+
+    }
+  }
+}
+
+RegionSelect.prototype.onEnd = function () {
+  var self = this;
+  if (self.selectDiv) {
+    self.selectDiv.style.display = "none";
+  }
+  this.isSelect = false;
+  //_selectedRegions = this.selectedRegion;
+}
+
+// 判断一个区域是否在选择区内
+RegionSelect.prototype.innerRegion = function (selDiv, region) {
+  var s_top = parseInt(selDiv.style.top);
+  var s_left = parseInt(selDiv.style.left);
+  var s_right = s_left + parseInt(selDiv.offsetWidth);
+  var s_bottom = s_top + parseInt(selDiv.offsetHeight);
+
+  var r_top = parseInt(region.offsetTop);
+  var r_left = parseInt(region.offsetLeft);
+  var r_right = r_left + parseInt(region.offsetWidth);
+  var r_bottom = r_top + parseInt(region.offsetHeight);
+
+  var t = Math.max(s_top, r_top);
+  var r = Math.min(s_right, r_right);
+  var b = Math.min(s_bottom, r_bottom);
+  var l = Math.max(s_left, r_left);
+
+  if (b > t + 5 && r > l + 5) {
+    return region;
+  } else {
+    return null;
+  }
+
+}
+
+RegionSelect.prototype.clearSelections = function (regions) {
+  for (var i = 0; i < regions.length; i++) {
+    regions[i].className = regions[i].className.replaceAll(this.selectedClass, "");
+  }
+}
+
+function getSelectedRegions() {
+  return _selectedRegions;
+}
+
+/*-------------------------------------- 区域选择方法结束 --------------------------------------------*/
+
+function showSelDiv() {
+  var selInfo = "";
+  var arr = getSelectedRegions();
+  for (var i = 0; i < arr.length; i++) {
+    selInfo += arr[i].innerHTML + "\n";
+  }
+
+  alert("共选择 " + arr.length + " 个文件，分别是：\n" + selInfo);
+
+}
+
+function MoveSelectDiv(event, ui,id) {
+  var arr = getSelectedRegions();
+  var iMoveLeft = ui.position.left - ui.originalPosition.left;
+  var iMoveTop = ui.position.top - ui.originalPosition.top;
+
+  for (var i = 0; i < arr.length; i++) {
+    //if (arr[i].id === id) continue;
+
+    if (arr[i].parentNode.id !== document.getElementById(id).parentNode.id) continue;
+    var iLeft = parseInt($(arr[i]).attr("bLeft"));
+    var iTop = parseInt($(arr[i]).attr("bTop"));
+    $(arr[i]).css("left", (iLeft + iMoveLeft) + "px");
+    $(arr[i]).css("top", (iTop + iMoveTop) + "px");
+  }
+}
+
+function startMove() {
+  var arr = getSelectedRegions();
+  for (var i = 0; i < arr.length; i++) {
+    $(arr[i]).attr("bLeft", $(arr[i]).position().left);
+    $(arr[i]).attr("bTop", $(arr[i]).position().top);
+  }
+}
+
+
+
+//左对齐
+function SelectAlignLeft() {
+  var arr = getSelectedRegions();
+  var iLeft = 0;
+  var id = "";
+
+  for (var i = 0; i < arr.length; i++) {
+    if (id === "") id = arr[i].parentNode.id;
+    if (id !== arr[i].parentNode.id) continue;
+    if ($(arr[i]).position().left<iLeft||iLeft===0) {
+      iLeft = $(arr[i]).position().left;
+    }
+  }
+
+  for (var j = 0; j < arr.length; j++) {
+    if (id !== arr[j].parentNode.id) continue;
+    $(arr[j]).css("left", iLeft + "px");
+  }
+
+  jsPlumb.repaintEverything();
+}
+
+//居中对齐
+function SelectAlignCenter() {
+  var arr = getSelectedRegions();
+  var iLeft = 0;
+  var id = "";
+
+  for (var i = 0; i < arr.length; i++) {
+    if (id === "") id = arr[i].parentNode.id;
+    if (id !== arr[i].parentNode.id) continue;
+    if ($(arr[i]).position().left < iLeft || iLeft === 0) {
+      iLeft = $(arr[i]).position().left + parseInt(GetStyle(arr[i],"width")) / 2;
+    }
+  }
+
+  for (var j = 0; j < arr.length; j++) {
+    if (id !== arr[j].parentNode.id) continue;
+    $(arr[j]).css("left", (iLeft - parseInt(GetStyle(arr[j],"width")) / 2) + "px");
+  }
+
+  jsPlumb.repaintEverything();
+}
+//右对齐
+function SelectAlignRight() {
+  var arr = getSelectedRegions();
+  var iLeft = 0;
+  var id = "";
+
+  for (var i = 0; i < arr.length; i++) {
+    if (id === "") id = arr[i].parentNode.id;
+    if (id !== arr[i].parentNode.id) continue;
+    if ($(arr[i]).position().left + parseInt(GetStyle(arr[i], "width")) > iLeft || iLeft === 0) {
+      iLeft = $(arr[i]).position().left + parseInt(GetStyle(arr[i], "width"));
+    }
+  }
+
+  for (var j = 0; j < arr.length; j++) {
+    if (id !== arr[j].parentNode.id) continue;
+    $(arr[j]).css("left", (iLeft - parseInt(GetStyle(arr[j], "width"))) + "px");
+  }
+
+  jsPlumb.repaintEverything();
+}
+
+//上对齐
+function SelectAlignTop() {
+  var arr = getSelectedRegions();
+  var iTop = 0;
+  var id = "";
+
+  for (var i = 0; i < arr.length; i++) {
+    if (id === "") id = arr[i].parentNode.id;
+    if (id !== arr[i].parentNode.id) continue;
+    if ($(arr[i]).position().top < iTop || iTop === 0) {
+      iTop = $(arr[i]).position().top;
+    }
+  }
+
+  for (var j = 0; j < arr.length; j++) {
+    if (id !== arr[j].parentNode.id) continue;
+    $(arr[j]).css("top", iTop + "px");
+  }
+
+  jsPlumb.repaintEverything();
+}
+
+//垂直居中
+function SelectAlignMiddle() {
+  var arr = getSelectedRegions();
+  var iTop = 0;
+  var id = "";
+
+  for (var i = 0; i < arr.length; i++) {
+    if (id === "") id = arr[i].parentNode.id;
+    if (id !== arr[i].parentNode.id) continue;
+    if ($(arr[i]).position().top + parseInt(GetStyle(arr[i], "height")) / 2 < iTop || iTop === 0) {
+      iTop = $(arr[i]).position().top + parseInt(GetStyle(arr[i], "height")) / 2;
+    }
+  }
+
+  for (var j = 0; j < arr.length; j++) {
+    if (id !== arr[j].parentNode.id) continue;
+    $(arr[j]).css("top", (iTop - parseInt(GetStyle(arr[j], "height")) / 2) + "px");
+  }
+
+  jsPlumb.repaintEverything();
+}
+
+//下对齐
+function SelectAlignBottom() {
+  var arr = getSelectedRegions();
+  var iTop = 0;
+  var id = "";
+
+  for (var i = 0; i < arr.length; i++) {
+    if (id === "") id = arr[i].parentNode.id;
+    if (id !== arr[i].parentNode.id) continue;
+    if ($(arr[i]).position().top + parseInt(GetStyle(arr[i], "height")) > iTop || iTop === 0) {
+      iTop = $(arr[i]).position().top + parseInt(GetStyle(arr[i], "height"));
+    }
+  }
+
+  for (var j = 0; j < arr.length; j++) {
+    if (id !== arr[j].parentNode.id) continue;
+    $(arr[j]).css("top", (iTop - parseInt(GetStyle(arr[j], "height"))) + "px");
+  }
+
+  jsPlumb.repaintEverything();
+}
+
+//上下靠拢
+function SelectUpColse() {
+  var arr = getSelectedRegions();
+  var iTop = 0;
+  var id = "";
+  for (var i = 0; i < arr.length; i++) {
+    if (id === "") id = arr[i].parentNode.id;
+    if (id !== arr[i].parentNode.id) continue;
+    if (iTop === 0) iTop = $(arr[i]).position().top;
+    $(arr[i]).css("top", iTop + "px");
+    iTop += parseInt(GetStyle(arr[i], "height"));
+  }
+
+  jsPlumb.repaintEverything();
+}
+
+//左右靠拢
+function SelectLeftColse() {
+  var arr = getSelectedRegions();
+  var iLeft = 0;
+  var id = "";
+  for (var i = 0; i < arr.length; i++) {
+    if (id === "") id = arr[i].parentNode.id;
+    if (id !== arr[i].parentNode.id) continue;
+    if (iLeft === 0) iLeft = $(arr[i]).position().left;
+    $(arr[i]).css("left", iLeft + "px");
+    iLeft += parseInt(GetStyle(arr[i], "width"));
+  }
+
+  jsPlumb.repaintEverything();
+
+}
+
+
+//同高
+function SelectSameHeight() {
+  var arr = getSelectedRegions();
+  var iHeigth = 0;
+  var id = "";
+  for (var i = 0; i < arr.length; i++) {
+    if (id === "") id = arr[i].parentNode.id;
+    if (id !== arr[i].parentNode.id) continue;
+    if (iHeigth === 0) iHeigth = parseInt(GetStyle(arr[i], "height"));
+    $(arr[i]).css("height", iHeigth+"px");
+  }
+
+  jsPlumb.repaintEverything();
+}
+
+
+//同宽
+function SelectSameWidth() {
+  var arr = getSelectedRegions();
+  var iWidth = 0;
+  var id = "";
+  for (var i = 0; i < arr.length; i++) {
+    if (id === "") id = arr[i].parentNode.id;
+    if (id !== arr[i].parentNode.id) continue;
+    if (iWidth === 0) iWidth = parseInt(GetStyle(arr[i], "width"));
+    $(arr[i]).css("width", iWidth + "px");
+  }
+
+  jsPlumb.repaintEverything();
+
+}
+
+
+//旋转
+function SelectClockwise(index) {
+  var arr = getSelectedRegions();
+  //var iWidth = 0;
+  //var id = "";
+  for (var i = 0; i < arr.length; i++) {
+    //if (id === "") id = arr[i].parentNode.id;
+    //if (id !== arr[i].parentNode.id) continue;
+    var sIndex= arr[i].style.transform.replace("rotate(", "").replace("deg)", "");
+    var iNum = 0;
+    if (sIndex) iNum = parseInt(sIndex);
+    $(arr[i]).css("transform", "rotate(" + (iNum + index)%360 + "deg)");
+
+    var points = jsPlumb.getEndpoints(arr[i]);
+  }
+
+  jsPlumb.repaintEverything();
+
+}
+//删除选中
+function DeleteSelect() {
+  var arr = getSelectedRegions();
+  for (var i = 0; i < arr.length; i++) {
+    jsPlumb.remove(arr[i],true);
+    //var points = jsPlumb.getEndpoints(arr[i]);
+    //for (var j = 0; j < points.length; j++) {
+    //  jsPlumb.deleteEndpoint(points[j]);
+    //}
+    //arr[i].parentNode.removeChild(arr[i]);
+    }
+
+  jsPlumb.repaintEverything();
+
+}
+
+function GetStyle(obj, attr) {
+  if (obj.currentStyle) {
+    return obj.currentStyle[attr]; //只适用于IE
+  }
+  else {
+    return getComputedStyle(obj, false)[attr];  //只适用于FF,Chrome,Safa
+  }
+  return obj.style[attr]; //本人测试在IE和FF下没有用,chrome有用
+}
+
+</script>
+</body>
+</html>
