@@ -56,7 +56,7 @@
                 <form method="POST" enctype="multipart/form-data" id="fileHdfsUploadForm">
                     <!--<input type="text" name="extraField"/>-->
                     <a href="javascript:;" class="file">
-                        <input type="file" class="layui-btn" name="files"/>
+                        <input type="file" class="layui-btn" id="fileupload" name="files"/>
                         <span>点击上传文件</span>
                     </a><br/>
                     <!--<input type="submit" value="提交" id="btnSubmit"/>-->
@@ -89,6 +89,11 @@
 <![endif]-->
 <script type="text/javascript" src="/static/libs/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="/static/libs/jquery-ui-1.9.2.min.js"></script>
+<!--上传进度条依赖-->
+<!--<script type="text/javascript" src="/static/libs/jquery.fileupload.js"></script>-->
+<!--<script type="text/javascript" src="/static/libs/jquery.iframe-transport.js"></script>-->
+<!--<script type="text/javascript" src="/static/libs/jquery.ui.widget.js"></script>-->
+
 <script src="/static/libs/layui/layui.all.js"></script>
 <script type="text/javascript">
     //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
@@ -97,7 +102,18 @@
 
       //…
     });
+$(function(){
+     <!--$('#fileupload').fileupload({-->
 
+                <!--dataType: 'json',-->
+                <!--progressall: function (e, data) {-->
+                    <!--var progress = parseInt(data.loaded / data.total * 100, 10);-->
+                <!--},-->
+
+                <!--done: function(e, data) {-->
+                <!--}-->
+     <!--});-->
+});
 $(document).ready(function () {
 
       $("#hdfsUpBtnSubmit").click(function (event) {
@@ -108,16 +124,9 @@ $(document).ready(function () {
         fire_ajax_submit();
 
       });
-
-
-
-
-
-
 });
 
 function fire_ajax_submit() {
-
     // Get form
     var form = $('#fileHdfsUploadForm')[0];
 
@@ -126,7 +135,12 @@ function fire_ajax_submit() {
     data.append("CustomField", "This is some extra data, testing");
 
     $("#hdfsUpBtnSubmit").prop("disabled", true);
-
+    //加载层
+    var index = layer.load(0, {shade: false}); //0代表加载的风格，支持0-2
+    //loading层
+    var index = layer.load(1, {
+      shade: [0.6,'#333'] //0.1透明度的白色背景
+    });
     $.ajax({
         type: "POST",
         enctype: 'multipart/form-data',
@@ -139,16 +153,12 @@ function fire_ajax_submit() {
         cache: false,
         timeout: 600000,
         success: function (data) {
-
             console.log("SUCCESS : ", data);
-            $("#hdfsUpBtnSubmit").prop("disabled", false);
-
+            layer.closeAll('loading');
         },
         error: function (e) {
-
             console.log("ERROR : ", e);
-            $("#hdfsUpBtnSubmit").prop("disabled", false);
-
+            layer.closeAll('loading');
         }
     });
 

@@ -1,5 +1,6 @@
 package com.spark.utils;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -8,14 +9,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.spark.model.UploadProgressListenner;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
 import org.apache.hadoop.hdfs.DistributedFileSystem;
 import org.apache.hadoop.hdfs.protocol.DatanodeInfo;
+import org.dmg.pmml.False;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpSession;
 
 
 public class HDFSUtil {
@@ -33,15 +38,19 @@ public class HDFSUtil {
             if (file.isEmpty()) {
                 continue; //下一部分
             }
+
             try{
-                byte[] bytes = file.getBytes();
-                String uploadHDFSDir = ConfigUtil.getValueByKeyInConfig("spark.jar.UPLOADED_HDFS_FOLDER");
+                String uploadHDFSDir = ConfigUtil.getValueByKeyInConfig("spark.datasource.UPLOADED_HDFS_FOLDER");
                 File fileMake = new File("/"+uploadHDFSDir+"/"+file.getOriginalFilename());
                 logger.info(fileMake.toString());
-                if(!fileMake.exists()){
+                if(!isExist(fileMake.toString())){
                     uploadPath = fileMake.toString();
-                    writeFile(uploadPath,bytes);
+                    //将数据放入缓冲流，减少内存溢出
+                    BufferedInputStream bis = new BufferedInputStream(file.getInputStream());
+                    long size = file.getSize();
+                    writeFileFromBis(uploadPath,bis,size);
                 }else {
+                    uploadPath="exist";
                     logger.warn("文件已经存在");
                 }
 
@@ -116,6 +125,40 @@ public class HDFSUtil {
             Path path = new Path(filePath);
             FSDataOutputStream out = fs.create(path);
             out.write(bytes);
+            fs.close();
+        }catch (IOException e){
+            isSuccess=false;
+            logger.error(e.getMessage());
+        }
+        return isSuccess;
+    }
+
+    /**
+     * 写文件
+     * @param filePath
+     * @param bis
+     * @return
+     */
+    public static boolean writeFileFromBis(String filePath,BufferedInputStream bis,long size){
+        boolean isSuccess = true;
+
+        Configuration conf = new Configuration();
+        try {
+            FileSystem fs = FileSystem.get(conf);
+            Path path = new Path(filePath);
+            int bufferSize = 2048;
+            byte [] bytes = new byte[bufferSize];
+            FSDataOutputStream out = fs.create(path);
+            int offset;
+            int index = 0;
+            while ((offset=bis.read(bytes))>-1){
+                index += 1;
+
+                System.out.println((index-1)*bufferSize+offset+"----"+size);
+                out.write(bytes);
+            }
+            bis.close();
+
             fs.close();
         }catch (IOException e){
             isSuccess=false;
@@ -279,6 +322,22 @@ public class HDFSUtil {
 
         }
         return nodeNames;
+
+    }
+
+    public static  boolean isExist(String strpath){
+        boolean isExist = false;
+        Configuration conf = new Configuration();
+        try{
+
+            FileSystem fs = FileSystem.get(conf);
+            Path path = new Path(strpath);
+            isExist = fs.exists(path);
+        }catch (IOException e){
+            logger.error(e.getMessage());
+        }
+
+        return isExist;
 
     }
 }

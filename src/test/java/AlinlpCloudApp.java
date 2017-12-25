@@ -12,9 +12,10 @@ public class AlinlpCloudApp {
         // String postBody = "{\"text\":\"真丝韩都衣舍连衣裙\", \"type\": \"simple\"}";
         JSONObject postBodyJson = new JSONObject();
 
-        String text = "骶骨弧度中弧\n" +
+        String text1 = "骶骨弧度中弧\n" +
                 "临产或高危情况：\n" +
                 "孕妇孕期查唐氏筛查高风险，未行羊水穿刺，于孕7+月在本市中心医院查患有地中海贫血（未见报告单）。孕期无头昏、胸闷、气促、眼花等症状，不伴皮肤瘙痒史，不伴双下肢水肿史，现因39+5周，下腹隐痛2+小时入院。\n";
+        String text = "因为java不支持多重继承，所以有了接口，一个类只能继承一个父类，但可以实现多个接... abstract void print（)； 此语句表示方法的抽象，无实现。 接口和抽象类的区别 1 接口";
         // 要处理的文本
         postBodyJson.put("text", text);
         // type: 控制输出样式，"simple" 简单输出; "full" 详细输出，
