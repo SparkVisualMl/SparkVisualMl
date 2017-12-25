@@ -1,0 +1,1 @@
+package com.algorithm;/** * 算法组合 */public interface Assembly {}
