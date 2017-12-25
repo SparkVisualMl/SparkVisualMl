@@ -1,7 +1,7 @@
 //添加节点
 function addNode(parentId, nodeId, nodeLable, position) {
   var panel = d3.select("#" + parentId);
-  panel.append('div').style('width','120px').style('height','50px')
+  panel.append('div').style('width','120px').style('height','50px').style('line-height','50px')
     .style('position','absolute')
     .style('top',position.y).style('left',position.x)
     .style('border','2px #9DFFCA solid').attr('align','center')
@@ -179,9 +179,11 @@ jsPlumb.ready(function() {
       $("#node" + uid).bind("contextmenu", function(){
           return false;
       })
+      $("#node" + uid).addClass("fileDiv");
       $("#node" + uid).mousedown(function(e) {
           if(e.which==1){
             console.log("点击了左键");
+
           }
 
           //右键为3
@@ -190,6 +192,16 @@ jsPlumb.ready(function() {
               rightBtnConfig({"nodeName":nodeName,"event":e,"nodeId":"#node" + uid});
           }
       })
+
+      // dbclick start
+
+      $("#node"+uid).dblclick(function(){
+            console.log("dbclick击了左键");
+            instance.remove($(this));
+      });
+
+      // dbclick end
+      console.log(nodeName+"add out point and in point");
       addPorts(instance, node, ['out','out1','out2'],'output');
       addPorts(instance, node, ['in1','in2'],'input');
       instance.draggable($(node));
@@ -301,28 +313,32 @@ jsPlumb.ready(function() {
             }
         });
     }
-  
+    //初始化连接的俩个方框 开始
     instance.doWhileSuspended(function() {
 
-      // declare some common values:
-      var arrowCommon = { foldback:0.8, fillStyle:color, width:5 },
-      // use three-arg spec to create two different arrows with the common values:
-      overlays = [
-        [ "Arrow", { location:0.8 }, arrowCommon ],
-        [ "Arrow", { location:0.2, direction:-1 }, arrowCommon ]
-      ];
-
-      var node1 = addNode('flow-panel','HDFS', 'HDFS', {x:'10px',y:'10px'});
-      var node2 = addNode('flow-panel','MySQL', 'MySQL', {x:'80px',y:'80px'});
-
-      addPorts(instance, node1, ['out1','out2','out3'],'output');
-      addPorts(instance, node2, ['in','in1','in2'],'input');
-
-      connectPorts(instance, node1, 'out2', node2, 'in2');
-      instance.draggable($('.node'));
+//      // declare some common values:
+//      var arrowCommon = { foldback:0.8, fillStyle:color, width:5 },
+//      // use three-arg spec to create two different arrows with the common values:
+//      overlays = [
+//        [ "Arrow", { location:0.8 }, arrowCommon ],
+//        [ "Arrow", { location:0.2, direction:-1 }, arrowCommon ]
+//      ];
+//
+//      var node1 = addNode('flow-panel','HDFS', 'HDFS', {x:'10px',y:'10px'});
+//      var node2 = addNode('flow-panel','MySQL', 'MySQL', {x:'80px',y:'80px'});
+//
+//      addPorts(instance, node1, ['out1','out2','out3'],'output');
+//      addPorts(instance, node2, ['in','in1','in2'],'input');
+//
+//      connectPorts(instance, node1, 'out2', node2, 'in2');
+//      instance.draggable($('.node'));
     });
+    //初始化连接的俩个方框 结束
 
     jsPlumb.fire("jsFlowLoaded", instance);
+
+
+    //连接回调方法 开始
     function connectCallBack(args){
           var instance = args.instance;
           //自己连接自己事件
@@ -332,10 +348,33 @@ jsPlumb.ready(function() {
           instance.bind("connection", function (connInfo, originalEvent) {
 
               if (connInfo.connection.sourceId == connInfo.connection.targetId) {
-                  jsPlumb.detach(connInfo);
-                  console.log("不能连接自己！");
+                  setTimeout(function(){
+                    instance.detach(connInfo.connection);
+                    console.log("不能连接自己！");
+                    layer.msg('不能连接自己！', {
+                        time: 1200, //1.2s后自动关闭
+                        btn: ['明白了', '知道了']
+                      });
+                  },400);
+
+
+
+
+
               }else{
                  console.log("连接"+connInfo.connection.sourceId+"==="+connInfo.connection.targetId);
+                 console.log("liu cheng is");
+                 var connArray = instance.getAllConnections();
+                 console.log(connArray);
+                 var array = new Array();
+
+                 for(var i=0;i<connArray.length;i++){
+                    var connOne = connArray[i];
+                    console.log("-----------------------");
+                    array[i]=connOne.source.innerText;
+                    array[i+1]=connOne.target.innerText;
+                 }
+                 console.log(array);
               }
            });
 
@@ -367,6 +406,7 @@ jsPlumb.ready(function() {
      function removeConnection(args){
         args.instance.removeAllEndpoints("window");
      }
+     //连接回调方法 结束
 
     
 });
