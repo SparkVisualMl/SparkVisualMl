@@ -1,1 +1,0 @@
-package com.algorithm.basicstatistics;import com.algorithm.Algorithm;public class ALS implements Algorithm{    @Override    public void getArgs() {    }    @Override    public void getInputData() {    }    @Override    public void setOutputData() {    }    @Override    public void compute() {    }}
