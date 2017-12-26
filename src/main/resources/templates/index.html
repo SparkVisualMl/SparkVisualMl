@@ -52,8 +52,9 @@
     #wc_submit_btn{width:50px;height:40px;text-align:center;line-height:40px;background:red;color:#000;}
 
 
-
-    <!--.seled{border:1px solid red;background-color:#D6DFF7;}-->
+    .flow-fluid .row .col-md-2{width:240px;position:relative;}
+    .flow-fluid .row .col-md-2 #show-hide,#show-hide2{position:absolute;font-size: 30px; color: #1E9FFF;right:-10px;top:0;cursor:pointer;}
+    #show-hide2{display:none;}
 
     </style>
   </head>
@@ -107,7 +108,7 @@
 
     <div class="flow-fluid">
       <div class="row">
-        <div class="col-md-2" style="width:240px;">
+        <div class="col-md-2" style="">
           <div class="panel panel-default" style="height:100%;">
             <div class="panel-body">
               <div id="control-panel">
@@ -115,7 +116,11 @@
               </div>
             </div>
           </div>
+          <i class="layui-icon" id="show-hide">&#xe603;</i>
+          <i class="layui-icon" id="show-hide2">&#xe602;</i>
+
         </div>
+
         <div class="col-md-6" style="height:500px;width: 83%">
           <div class="panel panel-default" id="divCenter" style="height:100%;">
             <div class="panel-body">
@@ -153,71 +158,33 @@
     <script type="text/javascript" src="/static/libs/reg-login.js"></script>
     <script type='text/javascript'>
 
-      $(document).ready(function () {
 
-      $("#btnSubmit").click(function (event) {
 
-        //stop submit the form, we will post it manually.
-        event.preventDefault();
-
-        fire_ajax_submit();
+      layui.use('form', function(){
+          var form = layui.form;
+          //监听提交
+          form.on('submit(formSubmit)', function(data){
+            layer.msg(JSON.stringify(data.field));
+          });
+      });
+    $(function(e){
+      $("#show-hide").click(function(e){
+        $(".col-md-2").css("margin-left","-210px");
+        $(this).css("display","none");
+        $("#show-hide2").fadeIn();
 
       });
 
 
+      $("#show-hide2").click(function(e){
+        $(".col-md-2").css("margin-left","0px");
+        $(this).css("display","none");
+        $("#show-hide").fadeIn();
 
+      });
 
-
-
-});
-
-function fire_ajax_submit() {
-
-    // Get form
-    var form = $('#fileUploadForm')[0];
-
-    var data = new FormData(form);
-
-    data.append("CustomField", "This is some extra data, testing");
-
-    $("#btnSubmit").prop("disabled", true);
-
-    $.ajax({
-        type: "POST",
-        enctype: 'multipart/form-data',
-        url: "/utils/uploadjar",
-        data: data,
-        //http://api.jquery.com/jQuery.ajax/
-        //http://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
-        processData: false, //prevent jQuery from automatically transforming the data into a query string
-        contentType: false,
-        cache: false,
-        timeout: 600000,
-        success: function (data) {
-
-            console.log("SUCCESS : ", data);
-            $("#btnSubmit").prop("disabled", false);
-
-        },
-        error: function (e) {
-
-            console.log("ERROR : ", e);
-            $("#btnSubmit").prop("disabled", false);
-
-        }
     });
 
-}
-layui.use('form', function(){
-  var form = layui.form;
-  //监听提交
-  form.on('submit(formSubmit)', function(data){
-    alert(JSON.stringify(data.field));
-    alert(444);
-//    layer.msg(JSON.stringify(data.field));
-
-  });
-});
     </script>
 
   </body>
