@@ -51,10 +51,10 @@
     <h4 class="title_dataman">数据管理</h4>
     <div class="layui-tab">
         <ul class="layui-tab-title">
-            <li class="layui-this">数据工具</li>
-            <li>数据工具2</li>
-            <li>数据工具3</li>
-            <li>数据工具4</li>
+            <li class="layui-this">数据上传</li>
+            <li><div class="outbox layui-nav-item layui-this"><a th:href="'http://'+${ip}+':16010'" target="view_frame">Hbase Monitor</a></div></li>
+            <li>数据源管理</li>
+            <li>数据源展示</li>
             <li>数据工具5</li>
             <li>数据工具6</li>
             <li>数据工具7</li>
@@ -120,44 +120,6 @@
 <script type="text/javascript" src="/static/libs/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="/static/libs/jquery-ui-1.9.2.min.js"></script>
 <script src="/static/libs/layui/layui.all.js"></script>
-    <script type="text/javascript">
-        var fm=document.getElementById('progresId');
-        fm.onsubmit=function () {
-            //实例化 FormData对象，同时收集表单的信息，包括普通表单域和文件表单域的信息
-            var fd=new FormData(fm);
-            var xhr=new XMLHttpRequest();
-            xhr.onreadystatechange=function () {
-                if(xhr.readyState==4){
-                    eval("var info="+xhr.responseText); //将json信息转化成js对象
-                    var result=document.getElementById("showResult"),
-                        user=document.getElementById("user"),
-                        pass=document.getElementById("pass"),
-                        face=document.getElementById("face");
-                    console.log(user);
-                    console.log(pass);
-                    result.style.display='block';
-                    user.value=info.user;
-                    pass.value=info.pass;
-                    face.setAttribute("src",info.face);
-                }
-            };
-            xhr.upload.onprogress=function (evt) {   //事件监听器，获取上传的情况
-                var loaded=evt.loaded;  //已上传的大小
-
-                total=evt.total; //总大小
-                console.log(total);
-                per=Math.floor((loaded/total)*100)+'%'; //转换成百分比
-                <!--son=document.getElementById("son");-->
-                <!--son.innerHTML=per;-->
-                <!--son.style.width=per;-->
-            }
-            xhr.open('GET','/utils/uploadtest');
-            xhr.send(fd);   //发送数据
-            console.log("发送数据");
-            return false;   //阻止页面提交
-        }
-</script>
-
 
     <script type="text/javascript">
     //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
@@ -172,11 +134,10 @@ $(document).ready(function () {
       $("#hdfsUpBtnSubmit").click(function (event) {
 
         //stop submit the form, we will post it manually.
-        <!--event.preventDefault();-->
+        event.preventDefault();
 
-        <!--fire_ajax_submit();-->
-        console.log("start");
-        uploadWithProgress();
+        fire_ajax_submit();
+
 
        });
 

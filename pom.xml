@@ -16,9 +16,24 @@
 
     <repositories>
 
+        <!--<repository>-->
+            <!--<id>aliyunmaven</id>-->
+            <!--<url>http://maven.aliyun.com/nexus/content/groups/public/</url>-->
+        <!--</repository>-->
+        <!--<repository>-->
+            <!--<id>wso2maven</id>-->
+            <!--<url>http://maven.wso2.org/nexus/content/groups/public</url>-->
+        <!--</repository>-->
+
+
         <repository>
-            <id>aliyunmaven</id>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        <id>central</id>
+        <url>http://repo1.maven.org/maven2/</url>
+        </repository>
+
+        <repository>
+        <id>ibiblio</id>
+        <url>http://mirrors.ibiblio.org/pub/mirrors/maven2/</url>
         </repository>
 
     </repositories>
@@ -87,15 +102,11 @@
             <groupId>org.apache.spark</groupId>
             <artifactId>${spark.core.version}</artifactId>
             <version>${spark.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.google.guava</groupId>
-                    <artifactId>guava</artifactId>
-                </exclusion>
-            </exclusions>
+
             <scope>compile</scope>
 
         </dependency>
+
         <!-- spark SQL的依赖 -->
         <dependency>
             <groupId>org.apache.spark</groupId>
@@ -209,11 +220,32 @@
             </exclusions>
         </dependency>
 
-        <!--定时任务依赖-->
         <dependency>
-            <groupId>org.quartz-scheduler</groupId>
-            <artifactId>quartz</artifactId>
+            <groupId>org.apache.phoenix</groupId>
+            <artifactId>phoenix-core</artifactId>
+            <version>4.13.1-HBase-1.2</version>
+            <scope>compile</scope>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.apache.hadoop</groupId>-->
+            <!--<artifactId>hadoop-hdfs</artifactId>-->
+            <!--<version>2.7.3</version>-->
+        <!--</dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/org.apache.hbase/hbase-client -->
+
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase-client</artifactId>
+            <version>1.3.0</version>
+
+            <scope>provided</scope>
+        </dependency>
+        <!--定时任务依赖-->
+        <!--<dependency>-->
+            <!--<groupId>org.quartz-scheduler</groupId>-->
+            <!--<artifactId>quartz</artifactId>-->
+        <!--</dependency>-->
         <!--Spring Boot 整合 Quartz-->
         <!--Spring 项目整合 Quartz 主要依靠添加 SchedulerFactoryBean 这个 FactoryBean ，所以在maven 依赖中添加 spring-context-support 。-->
         <dependency>
@@ -240,13 +272,6 @@
             <version>2.3</version>
         </dependency>
         <!--极光短信验证码的依赖-->
-
-
-
-
-
-
-
 
 
 

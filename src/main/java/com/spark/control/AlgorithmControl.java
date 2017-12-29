@@ -33,15 +33,29 @@ public class AlgorithmControl {
     }
 
     @RequestMapping(value="/aigregister", method = RequestMethod.GET)
-    public String aigregister() {
+    public String aigregister(Model model) {
         //跳转到 templates 目录下的aigregister.html
+        try{
+            String ip = IPUtil.getLocalIpAddress();
+            model.addAttribute("ip",ip);
+        }catch (UnknownHostException e){
+            model.addAttribute("ip","error");
+            logger.error(e.getMessage());
+        }
         return "aigregister";
     }
 
 
     @RequestMapping(value="/datamanager", method = RequestMethod.GET)
-    public String datamanager() {
+    public String datamanager(Model model) {
         //跳转到 templates 目录下的test.html
+        try{
+            String ip = IPUtil.getLocalIpAddress();
+            model.addAttribute("ip",ip);
+        }catch (UnknownHostException e){
+            model.addAttribute("ip","error");
+            logger.error(e.getMessage());
+        }
         return "datamanager";
     }
     @RequestMapping(value="/test", method = RequestMethod.GET)
