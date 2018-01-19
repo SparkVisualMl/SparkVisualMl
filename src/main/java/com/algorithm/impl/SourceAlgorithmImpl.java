@@ -1,0 +1,1 @@
+package com.algorithm.impl;import com.algorithm.abstracts.SourceAlgorithm;public class SourceAlgorithmImpl extends SourceAlgorithm{}

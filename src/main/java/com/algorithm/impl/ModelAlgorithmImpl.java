@@ -1,0 +1,1 @@
+package com.algorithm.impl;import com.algorithm.abstracts.ModelSaveAlgorithm;public class ModelAlgorithmImpl extends ModelSaveAlgorithm{}

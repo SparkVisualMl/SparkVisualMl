@@ -1,0 +1,1 @@
+package com.algorithm.interfaces;import com.algorithm.abstracts.ViewAlgorithm;/** * 算法组合 */public interface Assembly {    /**     * 计算这一部分采用策略模式，Algorithm这个类为     * @param algorithm     * @return     */    public Object run(ViewAlgorithm algorithm);}

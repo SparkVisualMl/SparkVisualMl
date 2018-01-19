@@ -1,0 +1,1 @@
+package com.algorithm.impl;import com.algorithm.abstracts.MlibAlgorithm;public class MlibAlgorithmImpl extends MlibAlgorithm{}

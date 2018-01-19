@@ -1,0 +1,1 @@
+package com.algorithm.abstracts;/** * 数据源算法抽象类 */public abstract class SourceAlgorithm extends ViewAlgorithm{}

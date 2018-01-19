@@ -1,0 +1,1 @@
+package com.algorithm.abstracts;/** * 特征工程算法抽象类 */public abstract class FeatureProAlgorithm extends ViewAlgorithm{}

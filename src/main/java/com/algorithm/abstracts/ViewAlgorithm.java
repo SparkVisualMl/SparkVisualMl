@@ -1,0 +1,1 @@
+package com.algorithm.abstracts;import org.apache.spark.sql.Dataset;import java.util.HashMap;public abstract class ViewAlgorithm {    /**     * 输入参数     */    HashMap args = new HashMap<String,String>();    /**     * 输入数据     */    Dataset<Object> inputSet = null;    /**     * 输出数据     */    Dataset<Object> outputSet = null;    /**     *     */}

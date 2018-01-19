@@ -1,0 +1,1 @@
+package com.algorithm.abstracts;public class ModelSaveAlgorithm extends ViewAlgorithm{}

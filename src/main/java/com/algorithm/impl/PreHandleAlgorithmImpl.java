@@ -1,0 +1,1 @@
+package com.algorithm.impl;import com.algorithm.abstracts.PreHandleAlgorithm;public class PreHandleAlgorithmImpl extends PreHandleAlgorithm{}

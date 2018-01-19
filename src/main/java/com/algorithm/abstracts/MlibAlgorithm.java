@@ -1,0 +1,1 @@
+package com.algorithm.abstracts;/** * 机器学习算法抽象类 */public abstract class MlibAlgorithm extends ViewAlgorithm{}
