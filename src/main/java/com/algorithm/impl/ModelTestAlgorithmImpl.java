@@ -1,0 +1,1 @@
+package com.algorithm.impl;import com.algorithm.abstracts.ModelTestAlgorithm;public class ModelTestAlgorithmImpl extends ModelTestAlgorithm {}

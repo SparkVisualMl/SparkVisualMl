@@ -1,0 +1,1 @@
+package com.algorithm.impl;import com.algorithm.abstracts.ViewAlgorithm;public class SourceAlgorithmFactory extends com.algorithm.abstracts.factorys.SourceAlgorithmFactory{    /**     * 专门生产数据源算法的工厂类实现     * @return     */    @Override    public ViewAlgorithm buildAlgorithm() {        return null;    }}
