@@ -1,1 +1,1 @@
-package com.algorithm.abstracts;public class ViewModel {}
+package com.algorithm.abstracts;public abstract class ViewModel {}

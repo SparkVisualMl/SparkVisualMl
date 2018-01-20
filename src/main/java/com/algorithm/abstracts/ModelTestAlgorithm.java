@@ -1,0 +1,1 @@
+package com.algorithm.abstracts;public abstract class ModelTestAlgorithm extends ViewAlgorithm{}

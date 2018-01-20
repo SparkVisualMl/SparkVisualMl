@@ -1,0 +1,1 @@
+package com.algorithm.abstracts.factorys;import com.algorithm.abstracts.ViewAlgorithm;public interface AlgorithmFactory {    ViewAlgorithm buildAlgorithm();}

@@ -1,0 +1,1 @@
+package com.algorithm.abstracts.factorys;public abstract class ModelTestAlgorithmFactory implements AlgorithmFactory{}
