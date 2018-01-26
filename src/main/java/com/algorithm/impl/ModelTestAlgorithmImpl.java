@@ -1,1 +1,1 @@
-package com.algorithm.impl;import com.algorithm.abstracts.ModelTestAlgorithm;public class ModelTestAlgorithmImpl extends ModelTestAlgorithm {}
+package com.algorithm.impl;import com.algorithm.abstracts.ModelTestAlgorithm;import org.apache.spark.rdd.RDD;public class ModelTestAlgorithmImpl extends ModelTestAlgorithm {    @Override    public void setInput(RDD rdd) {    }    @Override    public void compute() {    }    @Override    public RDD getOutput() {        return null;    }}

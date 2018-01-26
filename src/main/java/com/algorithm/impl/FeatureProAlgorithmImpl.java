@@ -1,1 +1,1 @@
-package com.algorithm.impl;import com.algorithm.abstracts.FeatureProAlgorithm;public class FeatureProAlgorithmImpl extends FeatureProAlgorithm{}
+package com.algorithm.impl;import com.algorithm.abstracts.FeatureProAlgorithm;import org.apache.spark.rdd.RDD;public class FeatureProAlgorithmImpl extends FeatureProAlgorithm{    @Override    public void setInput(RDD rdd) {    }    @Override    public void compute() {    }    @Override    public RDD getOutput() {        return null;    }}

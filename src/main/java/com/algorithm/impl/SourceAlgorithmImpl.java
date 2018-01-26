@@ -1,1 +1,1 @@
-package com.algorithm.impl;import com.algorithm.abstracts.SourceAlgorithm;public class SourceAlgorithmImpl extends SourceAlgorithm{}
+package com.algorithm.impl;import com.algorithm.abstracts.SourceAlgorithm;import org.apache.spark.rdd.RDD;public class SourceAlgorithmImpl extends SourceAlgorithm{    RDD rdd = null;    @Override    public void setInput(RDD rdd) {        this.rdd=rdd;    }    @Override    public void compute() {    }    @Override    public RDD getOutput() {        return rdd;    }}

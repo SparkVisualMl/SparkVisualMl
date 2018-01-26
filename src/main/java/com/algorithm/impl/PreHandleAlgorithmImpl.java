@@ -1,1 +1,1 @@
-package com.algorithm.impl;import com.algorithm.abstracts.PreHandleAlgorithm;public class PreHandleAlgorithmImpl extends PreHandleAlgorithm{}
+package com.algorithm.impl;import com.algorithm.abstracts.PreHandleAlgorithm;import org.apache.spark.rdd.RDD;public class PreHandleAlgorithmImpl extends PreHandleAlgorithm{    @Override    public void setInput(RDD rdd) {    }    @Override    public void compute() {    }    @Override    public RDD getOutput() {        return null;    }}

@@ -1,1 +1,1 @@
-package com.algorithm.abstracts.factorys;import com.algorithm.abstracts.ViewAlgorithm;public interface AlgorithmFactory {    ViewAlgorithm buildAlgorithm();}
+package com.algorithm.abstracts.factorys;import com.algorithm.abstracts.ViewAlgorithm;public interface AlgorithmFactory {    //构造默认的算法    abstract ViewAlgorithm buildAlgorithm();    //通过 tag名字构造算法    abstract ViewAlgorithm buildAlgorithm(String tag);    //通过 类的全路径名字构造算法    abstract ViewAlgorithm buildAlgorithmByPath(String classFullPath);}

@@ -1,1 +1,1 @@
-package com.algorithm.abstracts;/** * 数据源算法抽象类 */public abstract class SourceAlgorithm extends ViewAlgorithm{}
+package com.algorithm.abstracts;import org.apache.spark.rdd.RDD;/** * 数据源算法抽象类 */public abstract class SourceAlgorithm extends ViewAlgorithm{    @Override    public void setInput(RDD rdd) {    }    @Override    public void compute() {    }    @Override    public RDD getOutput() {        return null;    }}

@@ -1,1 +1,1 @@
-package com.algorithm.abstracts;public class ModelSaveAlgorithm extends ViewAlgorithm{}
+package com.algorithm.abstracts;public abstract class ModelSaveAlgorithm extends ViewAlgorithm{}

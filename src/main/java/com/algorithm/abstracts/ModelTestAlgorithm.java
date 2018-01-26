@@ -1,1 +1,1 @@
-package com.algorithm.abstracts;public abstract class ModelTestAlgorithm extends ViewAlgorithm{}
+package com.algorithm.abstracts;import org.apache.spark.rdd.RDD;public abstract class ModelTestAlgorithm extends ViewAlgorithm{    @Override    public void setInput(RDD rdd) {    }    @Override    public void compute() {    }    @Override    public RDD getOutput() {        return null;    }}

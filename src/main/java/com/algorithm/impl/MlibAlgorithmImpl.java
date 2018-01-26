@@ -1,1 +1,1 @@
-package com.algorithm.impl;import com.algorithm.abstracts.MlibAlgorithm;public class MlibAlgorithmImpl extends MlibAlgorithm{}
+package com.algorithm.impl;import com.algorithm.abstracts.MlibAlgorithm;import org.apache.spark.rdd.RDD;public class MlibAlgorithmImpl extends MlibAlgorithm{    @Override    public void setInput(RDD rdd) {    }    @Override    public void compute() {    }    @Override    public RDD getOutput() {        return null;    }}

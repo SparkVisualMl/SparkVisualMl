@@ -1,1 +1,1 @@
-package com.algorithm.impl;import com.algorithm.abstracts.ModelSaveAlgorithm;public class ModelAlgorithmImpl extends ModelSaveAlgorithm{}
+package com.algorithm.impl;import com.algorithm.abstracts.ModelSaveAlgorithm;import org.apache.spark.rdd.RDD;public class ModelAlgorithmImpl extends ModelSaveAlgorithm{    @Override    public void setInput(RDD rdd) {    }    @Override    public void compute() {    }    @Override    public RDD getOutput() {        return null;    }}

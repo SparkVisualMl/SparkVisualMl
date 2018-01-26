@@ -1,1 +1,1 @@
-package com.algorithm.abstracts;/** * 数据预处理算法抽象类 */public abstract class PreHandleAlgorithm extends ViewAlgorithm{}
+package com.algorithm.abstracts;import org.apache.spark.rdd.RDD;/** * 数据预处理算法抽象类 */public abstract class PreHandleAlgorithm extends ViewAlgorithm{    @Override    public void setInput(RDD rdd) {    }    @Override    public void compute() {    }    @Override    public RDD getOutput() {        return null;    }}

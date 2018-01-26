@@ -1,1 +1,1 @@
-package com.algorithm.abstracts;/** * 特征工程算法抽象类 */public abstract class FeatureProAlgorithm extends ViewAlgorithm{}
+package com.algorithm.abstracts;import org.apache.spark.rdd.RDD;/** * 特征工程算法抽象类 */public abstract class FeatureProAlgorithm extends ViewAlgorithm{    @Override    public void setInput(RDD rdd) {    }    @Override    public void compute() {    }    @Override    public RDD getOutput() {        return null;    }}
